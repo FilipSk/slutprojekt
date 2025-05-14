@@ -332,6 +332,40 @@ class ImatDataHandler extends ChangeNotifier {
     notifyListeners();
   }
 
+  void reset() async {
+    await InternetHandler.reset();
+
+    // Clearing favorites
+    _favorites.clear();
+
+    // Fetching CreditCard, Customer & User
+    var response = await InternetHandler.getCreditCard();
+    var singleJson = jsonDecode(response);
+    _creditCard = CreditCard.fromJson(singleJson);
+
+    response = await InternetHandler.getCustomer();
+    singleJson = jsonDecode(response);
+    _customer = Customer.fromJson(singleJson);
+
+    response = await InternetHandler.getUser();
+    singleJson = jsonDecode(response);
+    _user = User.fromJson(singleJson);
+
+    // Remove orders
+    _orders.clear();
+
+    response = await InternetHandler.getShoppingCart();
+
+    //print('Cart $response');
+    singleJson = jsonDecode(response);
+    _shoppingCart = ShoppingCart.fromJson(singleJson);
+
+    response = await InternetHandler.getExtras();
+    _extras = jsonDecode(response);
+
+    notifyListeners();
+  }
+
   ///
   // Code below this line is private and can be disregarded
   ///
