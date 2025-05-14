@@ -19,9 +19,6 @@ class MainView extends StatelessWidget {
       appBar: MyAppBar(),
       body: Column(
         children: [
-          //header
-          Header(),
-
           //body
           Row(children: [Centerview(), Shoppingcart()]),
         ],
