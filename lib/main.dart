@@ -10,8 +10,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowMinSize(const Size(1920, 1080));
-    setWindowMaxSize(const Size(1920, 1080)); // Samma som min = låst
+    setWindowMinSize(const Size(1440, 810));
+    setWindowMaxSize(const Size(1440, 810)); // Samma som min = låst
   }
   runApp(
     ChangeNotifierProvider(
