@@ -23,7 +23,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   icon: Icon(Icons.search),
                   onPressed: () {
                     print("Du tryckte på sök");
-                    //TODO implementera sök
+                    //TODO: implementera sök
                   },
                 ),
                 hintText: "Sök",
