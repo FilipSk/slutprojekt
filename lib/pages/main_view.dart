@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
+import 'package:imat_app/widgets/app_bar.dart';
 import 'package:imat_app/widgets/center_view.dart';
 import 'package:imat_app/widgets/header.dart';
 import 'package:imat_app/widgets/shopping_cart.dart';
