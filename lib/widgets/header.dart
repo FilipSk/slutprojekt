@@ -5,9 +5,6 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      children: [Placeholder()],
-    );
+    return Row(mainAxisSize: MainAxisSize.max, children: [Placeholder()]);
   }
 }

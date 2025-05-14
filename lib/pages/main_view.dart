@@ -18,27 +18,15 @@ class MainView extends StatelessWidget {
     // Den kan vara enklare att förstå.
     // Denna version har fördelen att kort skapas on-demand.
     return Scaffold(
-      body: Column(children: [
-        //header
-        Header(),
-        //body
-        Row(
-          children: [
-            Centerview(),
-            Shoppingcart(),
-          ],
-
-        ),
-      
-      ],),
-      
-
-
+      body: Column(
+        children: [
+          //header
+          Header(),
+          //body
+          Row(children: [Centerview(), Shoppingcart()]),
+        ],
+      ),
     );
-
-
-
-
 
     /*
     return Scaffold(

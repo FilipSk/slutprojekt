@@ -32,9 +32,7 @@ class Products extends StatelessWidget {
           },
         ),
       ),
-    );;
+    );
+    ;
   }
 }
-
-
-
