@@ -40,12 +40,16 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ),
+        Text(
+          "Logga in",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
         IconButton(
-          iconSize: 50,
-          icon: Icon(Icons.account_circle, size: 65),
-          padding: const EdgeInsets.only(top: -10.0),
+          icon: Icon(Icons.account_circle, size: 55),
+          padding: const EdgeInsets.only(bottom: 10.0),
           onPressed: () {
             print("Du tryckte på konto");
+            //TODO: implementera konto
           },
         ),
       ],
