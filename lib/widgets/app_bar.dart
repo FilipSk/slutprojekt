@@ -9,6 +9,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text("Hanks livs"),
       backgroundColor: Colors.white,
       actions: [
+        IconButton(
+          iconSize: 50,
+          icon: Icon(Icons.shopping_cart),
+          onPressed: () {
+            print("Du tryckte på varukorg");
+          },
+        ),
         Padding(
           padding: EdgeInsets.only(right: 400.0),
           //padding: const EdgeInsets.symmetric(horizontal: 8.0),
