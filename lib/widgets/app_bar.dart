@@ -9,13 +9,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text("Hanks livs"),
       backgroundColor: Colors.white,
       actions: [
-        IconButton(
-          iconSize: 50,
-          icon: Icon(Icons.shopping_cart),
-          onPressed: () {
-            print("Du tryckte på varukorg");
-          },
-        ),
         Padding(
           padding: EdgeInsets.only(right: 400.0),
           //padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -26,14 +19,15 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Theme.of(context).colorScheme.primaryContainer,
-                prefixIcon: IconButton(
+                hintText: "Sök",
+                suffixIcon: IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () {
                     print("Du tryckte på sök");
                     //TODO: implementera sök
                   },
                 ),
-                hintText: "Sök",
+
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
                   borderSide: BorderSide.none,
@@ -45,6 +39,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ),
+        ),
+        IconButton(
+          iconSize: 50,
+          icon: Icon(Icons.account_circle, size: 65),
+          padding: const EdgeInsets.only(top: -10.0),
+          onPressed: () {
+            print("Du tryckte på konto");
+          },
         ),
       ],
     );
