@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/model/imat/product.dart';
 
+
+
 class ImatCategoryHandler extends ChangeNotifier {
   late ICategory currentCategories;
   MainCategories start = MainCategories("start");
@@ -38,7 +40,7 @@ class ImatCategoryHandler extends ChangeNotifier {
   SubCategories FRU = SubCategories(ProductCategory.FRUIT);
   SubCategories SWE = SubCategories(ProductCategory.SWEET);
   SubCategories HER = SubCategories(ProductCategory.HERB);
-  SubCategories UND = SubCategories(ProductCategory.UNDEFINED);
+  //SubCategories UND = SubCategories(ProductCategory.UNDEFINED);
 
   ImatCategoryHandler() {
     currentCategories = start;
@@ -99,6 +101,7 @@ abstract interface class ICategory {
   ICategory getParent();
   String getName();
   bool getStart();
+  String getImageName();
 }
 
 class MainCategories extends ICategory {
@@ -159,6 +162,14 @@ class MainCategories extends ICategory {
   bool getStart() {
     return start;
   }
+  
+  @override
+  String getImageName() {
+    // TODO: implement getImageName
+    throw UnimplementedError();
+  }
+  
+  
 }
 
 class SubCategories extends ICategory {
@@ -212,4 +223,12 @@ class SubCategories extends ICategory {
   bool getStart() {
     return start;
   }
+  
+  @override
+  String getImageName() {
+    
+    return "";
+  }
+  
+  
 }

@@ -17,9 +17,9 @@ class Centerview extends StatelessWidget {
     return Column(children: [
       GestureDetector(
         onTap: () => goBack(iMat,catHandler),
-        child: SizedBox(width: 200,height: 100, child: Text(rubrik(catHandler))),
+        child: SizedBox(width: 200,height: 50, child: Text(rubrik(catHandler))),
       ),
-       SizedBox( width: 1000, height: 800, child: Products()
+       SizedBox( width: 1100, height: 900, child: Products()
        )
        ],);
     

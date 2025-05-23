@@ -35,7 +35,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       title: 'Hanks Livs',
-      theme: ThemeData(colorScheme: AppTheme.colorScheme),
+      theme: ThemeData(
+        colorScheme: AppTheme.colorScheme,
+        ),
       home: const MainView(),
     );
   }

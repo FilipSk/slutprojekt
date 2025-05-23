@@ -9,4 +9,6 @@ class AppTheme {
   static const double paddingHuge = 32.0;
 
   static ColorScheme colorScheme = ColorScheme.fromSeed(seedColor: Colors.blue);
+  static Color cardColor = const Color.fromARGB(255, 255, 255, 255);
+  static Color hoverColor = const Color.fromARGB(255, 91, 34, 34);
 }
