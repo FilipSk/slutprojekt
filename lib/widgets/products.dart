@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
-import 'package:imat_app/widgets/app_bar.dart';
+import 'package:imat_app/widgets/categories.dart';
 import 'package:imat_app/widgets/product_card.dart';
 import 'package:provider/provider.dart';
 
@@ -10,28 +10,38 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var iMat = context.watch<ImatDataHandler>();
+    var iMat = Provider.of<ImatDataHandler>(context, listen: true);
+    
     var products = iMat.selectProducts;
     return Scaffold(
-      appBar: MyAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(AppTheme.paddingSmall),
-        child: GridView.builder(
-          itemCount: products.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      //appBar: AppBar(title: const Text('iMats produkter')),
+
+      body: CustomScrollView(
+        shrinkWrap: true,
+        slivers: [
+          Categories(),
+          
+          SliverGrid.builder(
+            itemCount: products.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4, // 4 kolumner
             crossAxisSpacing: AppTheme.paddingSmall,
-            mainAxisSpacing: AppTheme.paddingSmall,
-            childAspectRatio: 4 / 3,
+            mainAxisSpacing: AppTheme.paddingMedium,
+            childAspectRatio: 3/4,
           ),
           itemBuilder: (context, index) {
             final product = products[index];
 
             return ProductCard(product, iMat);
-          },
-        ),
-      ),
+          },)
+
+        ],
+
+
+
+      )
+      
+      
     );
-    ;
   }
 }
