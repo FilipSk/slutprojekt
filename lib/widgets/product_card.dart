@@ -11,7 +11,13 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
+      height: 50,
+      width: 50,
+
+      child: 
+    Card(
+
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
@@ -32,6 +38,7 @@ class ProductCard extends StatelessWidget {
           ],
         ),
       ),
+    ),
     );
   }
 }

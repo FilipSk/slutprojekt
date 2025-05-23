@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/app_theme.dart';
+import 'package:imat_app/model/imat_category_handler.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:imat_app/pages/main_view.dart';
 import 'package:provider/provider.dart';
@@ -10,14 +11,17 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowMinSize(const Size(1440, 810));
-    setWindowMaxSize(const Size(1440, 810)); // Samma som min = låst
+    setWindowMinSize(const Size(1920, 1080));
+    setWindowMaxSize(const Size(1920, 1080)); // Samma som min = låst
   }
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ImatDataHandler(),
-      child: const MyApp(),
-    ),
+    MultiProvider(
+  providers: [
+    ChangeNotifierProvider(create: (_) => ImatDataHandler()),
+    ChangeNotifierProvider(create: (_) => ImatCategoryHandler()),
+  ],
+  child: const MyApp(),
+)
   );
 }
 

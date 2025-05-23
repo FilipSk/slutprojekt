@@ -16,10 +16,12 @@ class MainView extends StatelessWidget {
     // Denna version har fördelen att kort skapas on-demand.
     return Scaffold(
       appBar: MyAppBar(),
-      body: Column(
+      body: Row(
+        
         children: [
           //body
-          Row(children: [Centerview(), Shoppingcart()]),
+          Centerview(),
+          Shoppingcart()
         ],
       ),
     );
