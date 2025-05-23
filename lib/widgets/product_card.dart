@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 
@@ -19,22 +18,14 @@ class ProductCard extends StatelessWidget {
     Card(
 
       elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: const EdgeInsets.all(AppTheme.paddingSmall),
+        padding: const EdgeInsets.all(8),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(child: iMat.getImage(product)),
-            Text(
-              product.name,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: AppTheme.paddingSmall),
-            Text(
-              '${product.price.toStringAsFixed(2)} ${product.unit}',
-              style: const TextStyle(fontSize: 14),
-            ),
+            const SizedBox(height: 8),
+            Text(product.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+            Text('${product.price.toStringAsFixed(2)} kr'),
           ],
         ),
       ),

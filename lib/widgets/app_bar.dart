@@ -1,111 +1,121 @@
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBar({super.key});
+  final Function(String) onSearchChanged;
+
+  const MyAppBar({super.key, required this.onSearchChanged});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 4,
-      automaticallyImplyLeading: false, // Ta bort default back-knapp
+      automaticallyImplyLeading: false,
+      toolbarHeight: 80, // ⬅️ Ökad höjd på AppBar
       titleSpacing: 0,
       title: Padding(
-        padding: const EdgeInsets.only(left: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Row(
           children: [
-            SizedBox(
-              width: 60,
-              height: 60,
-              child: InkWell(
-                onTap: () {
-                  print("Du tryckte på loggan");
-                  // TODO: Komma tillbaka till hemsidan
-                },
-                child: Image.asset("assets/images/Hank.png", fit: BoxFit.cover),
+            InkWell(
+              onTap: () {
+                print("Du tryckte på loggan");
+              },
+              borderRadius: BorderRadius.circular(30),
+              child: Image.asset(
+                "assets/images/Hank.png",
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(width: 12),
             const Text(
               "Hanks livs",
               style: TextStyle(
-                color: Colors.black,
-                fontSize: 22,
+                color: Colors.black87,
+                fontSize: 34,
                 fontWeight: FontWeight.bold,
+              ),
+            ),
+            const Spacer(),
+
+            Expanded(
+              flex: 3,
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primaryContainer,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: TextField(
+                  onChanged: onSearchChanged,
+                  decoration: InputDecoration(
+                    hintText: "Sök produkter...",
+                    border: InputBorder.none,
+                    isDense: true, // Viktigt för vertikal centrering
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.search, size: 24),
+                      onPressed: () {
+                        print("Du tryckte på sök");
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            const Spacer(),
+
+            TextButton.icon(
+              onPressed: () {
+                print("Du tryckte på historik");
+              },
+              icon: const Icon(Icons.history, color: Colors.black87, size: 36),
+              label: const Text(
+                "Historik",
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 25,
+                ),
+              ),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.grey.shade200,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+
+            TextButton.icon(
+              onPressed: () {
+                print("Du tryckte på konto");
+              },
+              icon: const Icon(Icons.account_circle, size: 36, color: Colors.black87),
+              label: const Text(
+                "Logga in",
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 25,
+                ),
+              ),
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               ),
             ),
           ],
         ),
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: SizedBox(
-            width: 400,
-            height: 40,
-            child: TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Theme.of(context).colorScheme.primaryContainer,
-                hintText: "Sök",
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: () {
-                    print("Du tryckte på sök");
-                    // TODO: implementera sök
-                  },
-                ),
-                border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  borderSide: BorderSide.none,
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 8.0,
-                ),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(width: 16),
-        SizedBox(
-          width: 120,
-          height: 40,
-          child: TextButton(
-            onPressed: () {
-              print("Du tryckte på historik");
-              // TODO: Fixa historik
-            },
-            style: TextButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 237, 232, 232),
-            ),
-            child: const Text(
-              "Historik",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ),
-        const SizedBox(width: 16),
-        const Text(
-          "Logga in",
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        IconButton(
-          icon: const Icon(Icons.account_circle, size: 40, color: Colors.black),
-          onPressed: () {
-            print("Du tryckte på konto");
-            // TODO: implementera konto
-          },
-        ),
-        const SizedBox(width: 16),
-      ],
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(80); // ⬅️ Motsvarande höjd
 }
