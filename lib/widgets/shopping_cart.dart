@@ -1,13 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
-import 'package:provider/provider.dart';
+import 'package:imat_app/pages/buy_list_view.dart';
+import 'package:imat_app/pages/cart_view.dart';
 
-class Shoppingcart extends StatelessWidget {
-  const Shoppingcart({super.key});
+class ShoppingCart extends StatelessWidget {
+  final ImatDataHandler iMat;
+
+  const ShoppingCart({super.key, required this.iMat});
 
   @override
   Widget build(BuildContext context) {
-    var iMat = context.watch<ImatDataHandler>();
-    return Text(iMat.getCreditCard().cardNumber);
+    var items = iMat.getShoppingCart().items;
+    return Container(
+      width: 535,
+      color: const Color.fromARGB(255, 242, 243, 241),
+
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Kundvagn",
+
+                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+              ),
+
+              SizedBox(width: 18),
+
+              Icon(
+                Icons.shopping_cart,
+                size: 46,
+                color: const Color.fromARGB(255, 175, 11, 28),
+              ),
+            ],
+          ),
+          Divider(color: Colors.black),
+
+          Container(height: 500, child: CartView()),
+          ElevatedButton(
+            onPressed:
+                items.isEmpty
+                    ? null
+                    : () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Dialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: SizedBox(
+                              width: 850,
+                              height: 700,
+                              child: BuyListView(),
+                            ),
+                          );
+                        },
+                      );
+                    },
+
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+              foregroundColor: Colors.white,
+            ),
+            child: Text(
+              'Till kassan',
+              style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -16,12 +16,12 @@ void main() {
   }
   runApp(
     MultiProvider(
-  providers: [
-    ChangeNotifierProvider(create: (_) => ImatDataHandler()),
-    ChangeNotifierProvider(create: (_) => ImatCategoryHandler()),
-  ],
-  child: const MyApp(),
-)
+      providers: [
+        ChangeNotifierProvider(create: (_) => ImatDataHandler()),
+        ChangeNotifierProvider(create: (_) => ImatCategoryHandler()),
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 

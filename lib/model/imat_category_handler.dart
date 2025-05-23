@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:imat_app/model/imat/product.dart';
-
 
 class ImatCategoryHandler extends ChangeNotifier {
   late ICategory currentCategories;
@@ -14,7 +11,6 @@ class ImatCategoryHandler extends ChangeNotifier {
 
   MainCategories skafferi = MainCategories("Skafferi");
   MainCategories kolhydrater = MainCategories("Kolhydrater");
-
 
   MainCategories bread = MainCategories("Bröd");
 
@@ -50,10 +46,7 @@ class ImatCategoryHandler extends ChangeNotifier {
     //Första kategorierna i hierarkin
     start.parent = start;
     start.start = true;
-    start.addCategories([
-      frukt, meat, skafferi,
-      BRE, greens, drick
-      ]);
+    start.addCategories([frukt, meat, skafferi, BRE, greens, drick]);
 
     BRE.name = "Bröd";
 
@@ -66,10 +59,9 @@ class ImatCategoryHandler extends ChangeNotifier {
     FRU.name = "Frukter";
 
     // osv :)
-    meat.addCategories([MEA,FIS]);
+    meat.addCategories([MEA, FIS]);
     FIS.name = "Fisk";
     MEA.name = "Kött";
-
 
     skafferi.addCategories([kolhydrater, DAI, FLO, SWE, NUT]);
     kolhydrater.addCategories([PAS, POT]);
@@ -80,8 +72,8 @@ class ImatCategoryHandler extends ChangeNotifier {
     PAS.name = "Pasta";
     POT.name = "Potatis & Ris";
     //bread.addCategories([bread]);
-    greens.addCategories([root,BER, CAB, POD, HER,]);
-    root.addCategories([VEG, ROO,]);
+    greens.addCategories([root, BER, CAB, POD, HER]);
+    root.addCategories([VEG, ROO]);
     BER.name = "Bär";
     CAB.name = "Kål";
     POD.name = "Baljväxter";
@@ -92,15 +84,15 @@ class ImatCategoryHandler extends ChangeNotifier {
     drick.addCategories([HOT, COL]);
     HOT.name = "Varm dricka";
     COL.name = "Kall dricka";
-
   }
-  void changeCategory(ICategory cat){
+  void changeCategory(ICategory cat) {
     currentCategories = cat;
-    
+
     notifyListeners();
   }
 }
-abstract interface class ICategory{
+
+abstract interface class ICategory {
   List<ICategory> getCategories();
   List<ProductCategory> getProductCategories();
   void setParent(ICategory parent);
@@ -108,86 +100,80 @@ abstract interface class ICategory{
   String getName();
   bool getStart();
 }
-class MainCategories extends ICategory{
+
+class MainCategories extends ICategory {
   bool start = false;
   String name;
   late ICategory parent;
   List<ICategory> categories = [];
-  
 
   ProductCategory? productCategory;
 
   MainCategories(this.name);
 
-
-  void addCategory(ICategory category){
+  void addCategory(ICategory category) {
     category.setParent(this);
     categories.add(category);
   }
-  void addCategories(List<ICategory> category){
+
+  void addCategories(List<ICategory> category) {
     for (ICategory cat in category) {
       cat.setParent(this);
       categories.add(cat);
     }
-    
   }
 
   @override
   List<ICategory> getCategories() {
     return categories;
   }
-  
+
   @override
   void setParent(ICategory parent) {
     this.parent = parent;
   }
+
   @override
   ICategory getParent() {
     return parent;
   }
+
   @override
   String getName() {
     return name;
   }
-  
+
   @override
   List<ProductCategory> getProductCategories() {
     List<ProductCategory> cats = [];
     for (ICategory cat in categories) {
       cats += cat.getProductCategories();
     }
-    if (productCategory != null){
+    if (productCategory != null) {
       cats.add(productCategory!);
     }
     return cats;
   }
-  
+
   @override
   bool getStart() {
     return start;
   }
-  
-  
 }
 
-
-
-
-class SubCategories extends ICategory{
+class SubCategories extends ICategory {
   bool start = false;
   late String name;
   late ICategory parent;
   List<ICategory> categories = [];
-  
 
   ProductCategory productCategory;
 
-  SubCategories(this.productCategory){
+  SubCategories(this.productCategory) {
     name = productCategory.name;
   }
 
-
-  void addCategory(ICategory category){
+  void addCategory(ICategory category) {
     category.setParent(this);
     categories.add(category);
   }
@@ -196,20 +182,22 @@ class SubCategories extends ICategory{
   List<ICategory> getCategories() {
     return categories;
   }
-  
+
   @override
   void setParent(ICategory parent) {
     this.parent = parent;
   }
+
   @override
   ICategory getParent() {
     return parent;
   }
+
   @override
   String getName() {
     return name;
   }
-  
+
   @override
   List<ProductCategory> getProductCategories() {
     List<ProductCategory> cats = [];
@@ -219,11 +207,9 @@ class SubCategories extends ICategory{
     cats.add(productCategory);
     return cats;
   }
-  
+
   @override
   bool getStart() {
     return start;
   }
-  
-  
 }

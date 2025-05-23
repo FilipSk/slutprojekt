@@ -309,6 +309,15 @@ class ImatDataHandler extends ChangeNotifier {
     return total;
   }
 
+  double shoppingCartSum() {
+    double sum = 0;
+
+    for (final item in _shoppingCart.items) {
+      sum = item.amount * item.product.price;
+    }
+    return sum;
+  }
+
   // Uppdaterar kundvagnen på servern och
   // meddelar GUI:t att kundvagnen ändrats.
   void setShoppingCart() async {

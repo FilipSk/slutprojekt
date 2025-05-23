@@ -13,17 +13,18 @@ class Categories extends StatelessWidget {
     var categories = catHandler.currentCategories;
 
     return SliverGrid.builder(
-            itemCount: categories.getCategories().length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, // 4 kolumner
-            crossAxisSpacing: AppTheme.paddingSmall,
-            mainAxisSpacing: AppTheme.paddingMedium,
-            childAspectRatio: 5/4,
-          ),
-          itemBuilder: (context, index) {
-            final category = categories.getCategories()[index];
+      itemCount: categories.getCategories().length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3, // 4 kolumner
+        crossAxisSpacing: AppTheme.paddingSmall,
+        mainAxisSpacing: AppTheme.paddingMedium,
+        childAspectRatio: 5 / 4,
+      ),
+      itemBuilder: (context, index) {
+        final category = categories.getCategories()[index];
 
-            return Category(category);
-          },);
+        return Category(category);
+      },
+    );
   }
 }

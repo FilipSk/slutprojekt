@@ -4,25 +4,25 @@ import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:imat_app/widgets/app_bar.dart';
 import 'package:imat_app/widgets/center_view.dart';
-import 'package:imat_app/widgets/products.dart';
 import 'package:imat_app/widgets/shopping_cart.dart';
+import 'package:provider/provider.dart';
 
 class MainView extends StatelessWidget {
   const MainView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var iMat = context.watch<ImatDataHandler>();
     // Det finns en version utan gridDelegate nedan.
     // Den kan vara enklare att förstå.
     // Denna version har fördelen att kort skapas on-demand.
     return Scaffold(
       appBar: MyAppBar(),
       body: Row(
-        
         children: [
           //body
           Centerview(),
-          Shoppingcart()
+          ShoppingCart(iMat: iMat),
         ],
       ),
     );
