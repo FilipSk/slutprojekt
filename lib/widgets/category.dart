@@ -28,33 +28,26 @@ class Category extends StatelessWidget {
     var iMat = context.watch<ImatDataHandler>();
     var catHandler = context.watch<ImatCategoryHandler>();
     
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      //onHover:, omg omg
-      //onEnter: (context) => setState(() => isHovered = true ),
-      //onExit: (context) => setState(() => isHovered = false ),
-      child: GestureDetector(
-      onTap: () => {findProducts(category, iMat, catHandler)},
-      child: 
-    Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(15)),
-        //side: BorderSide(color: Colors.black,width: 0.2,)
-      ),
-      //color: isHovered ? AppTheme.hoverColor : AppTheme.cardColor,
-      child: Column(
+    return Card(
+      color: AppTheme.cardColor,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        splashColor: AppTheme.splashColor,
+        hoverColor: AppTheme.hoverColor,
+        onTap: () => {findProducts(category, iMat, catHandler)},
+        child: Column(
         spacing: AppTheme.paddingMediumSmall,
         children: [
           Expanded(child: iMat.getImage(image)),
           Text(
             category.getName(),
-            style: const TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: AppTheme.fontLarge, fontWeight: FontWeight.bold),
 
           )],
       ),
-    ),),
-    )
-    ;
+      )
+      
+    );
   }
 
   void findProducts(

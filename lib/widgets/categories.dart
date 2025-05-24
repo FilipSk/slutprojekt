@@ -25,7 +25,11 @@ class Categories extends StatelessWidget {
           itemBuilder: (context, index) {
             final category = categories.getCategories()[index];
 
-            return Category(category, imat.findProductsByCategory(category.getProductCategories()[0])[0]);
-          },);
+            return Category(
+              category,
+              imat.findProductsByCategory(category.getProductCategories()[0])[0]
+              );
+          },
+          );
   }
 }

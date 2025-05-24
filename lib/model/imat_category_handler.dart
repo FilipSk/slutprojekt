@@ -102,6 +102,7 @@ abstract interface class ICategory {
   String getName();
   bool getStart();
   String getImageName();
+  List<ICategory> getParents();
 }
 
 class MainCategories extends ICategory {
@@ -169,6 +170,14 @@ class MainCategories extends ICategory {
     throw UnimplementedError();
   }
   
+  @override
+  List<ICategory> getParents() {
+    if (start){
+      return [];
+    }
+    return parent.getParents() + [parent];
+  }
+  
   
 }
 
@@ -228,6 +237,14 @@ class SubCategories extends ICategory {
   String getImageName() {
     
     return "";
+  }
+  
+  @override
+  List<ICategory> getParents() {
+    if (start){
+      return [];
+    }
+    return parent.getParents() + [parent];
   }
   
   

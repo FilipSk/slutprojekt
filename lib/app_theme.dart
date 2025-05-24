@@ -8,7 +8,20 @@ class AppTheme {
   static const double paddingLarge = 24.0;
   static const double paddingHuge = 32.0;
 
+  static const double fontSmall = 10;
+  static const double fontMedium = 20;
+  static const double fontBig = 30;
+  static const double fontLarge = 40;
+
+  static const double iconSmall = 10;
+  static const double iconMedium = 20;
+  static const double iconBig = 30;
+  static const double iconLarge = 40;
+
   static ColorScheme colorScheme = ColorScheme.fromSeed(seedColor: Colors.blue);
-  static Color cardColor = const Color.fromARGB(255, 255, 255, 255);
-  static Color hoverColor = const Color.fromARGB(255, 91, 34, 34);
+  static Color cardColor = const Color.fromARGB(255, 231, 231, 231);
+  static Color hoverColor = Colors.blue.withAlpha(30);
+  static Color splashColor = const Color.fromARGB(255, 0, 0, 0).withAlpha(30);
+
+
 }

@@ -20,7 +20,6 @@ class Products extends StatelessWidget {
         shrinkWrap: true,
         slivers: [
           Categories(),
-          
           SliverGrid.builder(
             itemCount: products.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
