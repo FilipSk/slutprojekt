@@ -31,10 +31,13 @@ class Category extends StatelessWidget {
     return Card(
       color: AppTheme.cardColor,
       child: InkWell(
+        
         borderRadius: BorderRadius.circular(12),
         splashColor: AppTheme.splashColor,
         hoverColor: AppTheme.hoverColor,
         onTap: () => {findProducts(category, iMat, catHandler)},
+        child: Padding(
+        padding: const EdgeInsets.only(top: 10),
         child: Column(
         spacing: AppTheme.paddingMediumSmall,
         children: [
@@ -44,7 +47,8 @@ class Category extends StatelessWidget {
             style: const TextStyle(fontSize: AppTheme.fontLarge, fontWeight: FontWeight.bold),
 
           )],
-      ),
+      ),)
+        
       )
       
     );

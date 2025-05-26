@@ -27,7 +27,7 @@ class NavBar extends StatelessWidget {
           ),
         SizedBox(width: 50,),
         //Text("data"),
-        SizedBox(width: 500, height: 65, 
+        SizedBox(width: 800, height: 65, 
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: [
@@ -49,7 +49,7 @@ class NavBar extends StatelessWidget {
           
         
         Card(
-              color: AppTheme.cardColor,
+              color: AppTheme.hoverColor,
               
               child: InkWell(
                 borderRadius: BorderRadius.circular(12),

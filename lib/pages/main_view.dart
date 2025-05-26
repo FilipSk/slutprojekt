@@ -4,6 +4,7 @@ import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:imat_app/widgets/app_bar.dart';
 import 'package:imat_app/widgets/center_view.dart';
+import 'package:imat_app/widgets/navigation_view.dart';
 import 'package:imat_app/widgets/shopping_cart.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +22,7 @@ class MainView extends StatelessWidget {
       body: Row(
         children: [
           //body
+          NavigationView(),
           Centerview(),
           ShoppingCart(iMat: iMat),
         ],

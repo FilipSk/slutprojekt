@@ -13,13 +13,40 @@ class Products extends StatelessWidget {
     var iMat = Provider.of<ImatDataHandler>(context, listen: true);
     
     var products = iMat.selectProducts;
-    return Scaffold(
+    return 
+    Scaffold(
+      
       //appBar: AppBar(title: const Text('iMats produkter')),
 
       body: CustomScrollView(
-        shrinkWrap: true,
+        
+        //shrinkWrap: true,
         slivers: [
+          SliverAppBar(title: Text("Kategorier", style: const TextStyle(fontSize: AppTheme.fontLarge,
+           //decoration: TextDecoration.underline
+           )
+           
+           ),
+           shape: Border(bottom: BorderSide(
+              color: Colors.black,
+
+            )),
+           ),
           Categories(),
+          SliverAppBar(
+            title: Text(
+              "Varor", 
+              style: const TextStyle(fontSize: AppTheme.fontLarge, 
+              //decoration: TextDecoration.underline
+              )
+              ),
+            shape: Border(bottom: BorderSide(
+              color: Colors.black,
+
+            )),
+            
+            ),
+
           SliverGrid.builder(
             itemCount: products.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -32,8 +59,9 @@ class Products extends StatelessWidget {
             final product = products[index];
 
             return ProductCard(product, iMat);
-          },)
-
+          },
+          ),
+          SliverAppBar(title: Text("Thats it mannen"),)
         ],
 
 
