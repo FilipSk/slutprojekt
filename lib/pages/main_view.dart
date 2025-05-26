@@ -8,26 +8,49 @@ import 'package:imat_app/widgets/navigation_view.dart';
 import 'package:imat_app/widgets/shopping_cart.dart';
 import 'package:provider/provider.dart';
 
-class MainView extends StatelessWidget {
+class MainView extends StatefulWidget {
   const MainView({super.key});
 
   @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+  String _searchText = '';
+
+  @override
   Widget build(BuildContext context) {
-    var iMat = context.watch<ImatDataHandler>();
-    // Det finns en version utan gridDelegate nedan.
-    // Den kan vara enklare att förstå.
-    // Denna version har fördelen att kort skapas on-demand.
+    final iMat = context.watch<ImatDataHandler>();
+
     return Scaffold(
-      appBar: MyAppBar(onSearchChanged: (String ) {  },),
+      appBar: MyAppBar(
+        onSearchChanged: (String newText) {
+          setState(() {
+            _searchText = newText;
+          });
+
+          // Kod för sökning :)
+          if (newText.isEmpty) {
+            iMat.selectAllProducts();
+          } else {
+            final results = iMat.findProducts(newText);
+            iMat.selectSelection(results);
+          }
+        },
+      ),
       body: Row(
         children: [
-          //body
-          NavigationView(),
-          Centerview(),
+          const NavigationView(),
+          Expanded(
+            flex: 3,
+            child: Centerview(hasSearchText: _searchText.isNotEmpty),
+          ),
           ShoppingCart(iMat: iMat),
         ],
       ),
     );
+  }
+}
 
     /*
     return Scaffold(
@@ -72,7 +95,6 @@ class MainView extends StatelessWidget {
         ),
       ),
     );*/
-  }
 
   Card _productCard(ImatDataHandler iMat, Product product) {
     return Card(
@@ -98,4 +120,3 @@ class MainView extends StatelessWidget {
       ),
     );
   }
-}
