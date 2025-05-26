@@ -13,7 +13,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.white,
       elevation: 4,
       automaticallyImplyLeading: false,
-      toolbarHeight: 80, // ⬅️ Ökad höjd på AppBar
+      toolbarHeight: 80,
       titleSpacing: 0,
       title: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -21,27 +21,32 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             InkWell(
               onTap: () {
-                print("Du tryckte på loggan");
+                print("Du tryckte på loggan eller texten");
               },
               borderRadius: BorderRadius.circular(30),
-              child: Image.asset(
-                "assets/images/Hank.png",
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(width: 12),
-            const Text(
-              "Hanks livs",
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
+              child: Row(
+                children: [
+                  ClipOval(
+                    child: Image.asset(
+                      "assets/images/Hank.png",
+                      width: 80,
+                      height: 80,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  const Text(
+                    "Hanks livs",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 34,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
             const Spacer(),
-
             Expanded(
               flex: 3,
               child: Container(
@@ -55,7 +60,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   decoration: InputDecoration(
                     hintText: "Sök produkter...",
                     border: InputBorder.none,
-                    isDense: true, // Viktigt för vertikal centrering
+                    isDense: true,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.search, size: 24),
@@ -67,9 +72,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-
             const Spacer(),
-
             TextButton.icon(
               onPressed: () {
                 print("Du tryckte på historik");
@@ -92,7 +95,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             const SizedBox(width: 12),
-
             TextButton.icon(
               onPressed: () {
                 print("Du tryckte på konto");
@@ -117,5 +119,5 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(80); // ⬅️ Motsvarande höjd
+  Size get preferredSize => const Size.fromHeight(80);
 }
