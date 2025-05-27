@@ -3,6 +3,7 @@ import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat/shopping_item.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
+import 'package:provider/provider.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -44,7 +45,9 @@ class ProductCard extends StatelessWidget {
                 Text("   "),
                 IconButton(onPressed: () => {
                   iMat.shoppingCartAdd(ShoppingItem(product))},
-                  icon: Icon(Icons.add), iconSize: AppTheme.iconLarge)
+                  icon: Icon(Icons.add), iconSize: AppTheme.iconLarge),
+               _favoriteButton(product, context),
+
             ],)
             
           ],
@@ -55,3 +58,20 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+Widget _favoriteButton(Product p, context) {
+    var iMat = Provider.of<ImatDataHandler>(context, listen: false);
+    var isFavorite = iMat.isFavorite(p);
+
+    var icon =
+        isFavorite
+            ? Icon(Icons.star, color: Colors.orange)
+            : Icon(Icons.star_border, color: Colors.orange);
+
+    return IconButton(
+      onPressed: () {
+        iMat.toggleFavorite(p);
+      },
+      icon: icon,
+    );
+  }
+

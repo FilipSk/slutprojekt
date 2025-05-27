@@ -75,6 +75,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.search, size: 24),
                       onPressed: () {
+                        
                         print("Du tryckte på sök");
                       },
                     ),

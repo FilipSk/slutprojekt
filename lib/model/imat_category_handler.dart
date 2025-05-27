@@ -5,7 +5,7 @@ import 'package:imat_app/model/imat/product.dart';
 
 class ImatCategoryHandler extends ChangeNotifier {
   late ICategory currentCategories;
-  MainCategories start = MainCategories("start");
+  MainCategories start = MainCategories("Start");
 
   MainCategories frukt = MainCategories("Frukt");
   MainCategories drick = MainCategories("Drickor");

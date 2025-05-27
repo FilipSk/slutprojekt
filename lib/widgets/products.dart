@@ -24,10 +24,10 @@ class Products extends StatelessWidget {
         //shrinkWrap: true,
         slivers: [
 
-          SliverAppBar(title: Text(catHandler.currentCategories.getName(), style: const TextStyle(fontSize: AppTheme.fontLarge,)),
+          SliverAppBar(automaticallyImplyLeading: false, title: Text(catHandler.currentCategories.getName(), style: const TextStyle(fontSize: AppTheme.fontLarge,)),
           shape: Border(bottom: BorderSide(color: Colors.black,)),),
           Categories(),
-          SliverAppBar(
+          SliverAppBar(automaticallyImplyLeading: false,
             title: Text(
               "Varor", 
               style: const TextStyle(fontSize: AppTheme.fontLarge, 
@@ -55,7 +55,7 @@ class Products extends StatelessWidget {
             return ProductCard(product, iMat);
           },
           ),
-          SliverAppBar(title: Text("Thats it mannen"),)
+          SliverAppBar(automaticallyImplyLeading: false, title: Text("Thats it mannen"),)
         ],
 
 

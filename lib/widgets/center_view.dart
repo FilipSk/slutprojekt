@@ -9,8 +9,8 @@ import 'package:provider/provider.dart';
 
 class Centerview extends StatelessWidget {
   final bool hasSearchText;
-
-  const Centerview({super.key, required this.hasSearchText});
+  final bool favorites;
+  const Centerview({super.key, required this.hasSearchText, required this.favorites});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,9 @@ class Centerview extends StatelessWidget {
     final products = iMat.selectProducts;
 
     if (!hasSearchText) {
+      if (!favorites){
+        
+      }
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -37,6 +40,7 @@ class Centerview extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             title: const Text(
               "Sökresultat, rensa sökning för att återgå",
               style: TextStyle(

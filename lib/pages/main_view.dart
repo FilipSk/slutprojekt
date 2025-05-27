@@ -40,7 +40,7 @@ class _MainViewState extends State<MainView> {
       ),
       body: Row(
         children: [
-          const NavigationView(),
+          //const NavigationView(),
           Expanded(
             flex: 3,
             child: Centerview(hasSearchText: _searchText.isNotEmpty),
