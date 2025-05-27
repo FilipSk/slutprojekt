@@ -18,6 +18,8 @@ class AppTheme {
   static const double iconBig = 30;
   static const double iconLarge = 40;
 
+  static const double borderRadius = 12;
+
   static ColorScheme colorScheme = ColorScheme.fromSeed(seedColor: Colors.blue);
   static Color cardColor = const Color.fromARGB(255, 231, 231, 231);
   static Color hoverColor = Colors.blue.withAlpha(30);

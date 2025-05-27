@@ -16,7 +16,7 @@ class ProductCard extends StatelessWidget {
       color: AppTheme.cardColor,
       elevation: 4,
       child: InkWell(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(AppTheme.borderRadius),
         splashColor: AppTheme.splashColor,
         hoverColor: AppTheme.hoverColor,
         onTap: () {},
@@ -25,7 +25,11 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: iMat.getImage(product)),
+            Expanded(child: ClipRRect(
+              borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+              child: iMat.getImage(product),)
+            
+            ),
             const SizedBox(height: 8),
             Text(product.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: AppTheme.fontBig)),
             Text('${product.price.toStringAsFixed(2)} kr', style: const TextStyle(fontSize: AppTheme.fontMedium)),

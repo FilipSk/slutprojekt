@@ -32,7 +32,7 @@ class Category extends StatelessWidget {
       color: AppTheme.cardColor,
       child: InkWell(
         
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(AppTheme.borderRadius),
         splashColor: AppTheme.splashColor,
         hoverColor: AppTheme.hoverColor,
         onTap: () => {findProducts(category, iMat, catHandler)},
@@ -41,7 +41,11 @@ class Category extends StatelessWidget {
         child: Column(
         spacing: AppTheme.paddingMediumSmall,
         children: [
-          Expanded(child: iMat.getImage(image)),
+          Expanded(child: ClipRRect(
+            borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+            child: iMat.getImage(image),
+          )
+          ),
           Text(
             category.getName(),
             style: const TextStyle(fontSize: AppTheme.fontLarge, fontWeight: FontWeight.bold),
