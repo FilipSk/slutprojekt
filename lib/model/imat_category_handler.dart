@@ -5,6 +5,11 @@ import 'package:imat_app/model/imat/product.dart';
 
 class ImatCategoryHandler extends ChangeNotifier {
   late ICategory currentCategories;
+
+  bool favourites = false;
+  void toggleFavorite(){
+    favourites = !favourites;
+  }
   MainCategories start = MainCategories("Start");
 
   MainCategories frukt = MainCategories("Frukt");

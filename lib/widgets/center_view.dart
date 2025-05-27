@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/product.dart';
+import 'package:imat_app/model/imat_category_handler.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
+import 'package:imat_app/widgets/fav_nav_bar.dart';
+import 'package:imat_app/widgets/favourites.dart';
 import 'package:imat_app/widgets/nav_bar.dart';
 import 'package:imat_app/widgets/products.dart';
 import 'package:imat_app/widgets/product_card.dart';
@@ -15,17 +18,28 @@ class Centerview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iMat = context.watch<ImatDataHandler>();
+    var catHandler = context.watch<ImatCategoryHandler>();
     final products = iMat.selectProducts;
-
     if (!hasSearchText) {
-      // if (!favorites){
-
-      // }
+      if (catHandler.favourites){
+        return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const FavNavBar(),
+          const SizedBox(height: 16),
+          SizedBox(
+            width: 1100,
+            height: 600,
+            child: const Favourites(),
+          ),
+        ],
+      );
+      }
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const NavBar(),
-          const SizedBox(height: 16),
+          const SizedBox(height: 0),
           SizedBox(
             width: 1100,
             height: 600,

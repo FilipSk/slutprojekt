@@ -20,7 +20,7 @@ class Categories extends StatelessWidget {
             crossAxisCount: 3, // 4 kolumner
             crossAxisSpacing: AppTheme.paddingLarge,
             mainAxisSpacing: AppTheme.paddingSmall,
-            childAspectRatio: 5/4,
+            childAspectRatio: 1.5,
           ),
           itemBuilder: (context, index) {
             final category = categories.getCategories()[index];

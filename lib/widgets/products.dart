@@ -13,6 +13,7 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     var iMat = Provider.of<ImatDataHandler>(context, listen: true);
     var catHandler = context.watch<ImatCategoryHandler>();
+    //iMat.selectAllProducts();
     var products = iMat.selectProducts;
     return 
     Scaffold(
