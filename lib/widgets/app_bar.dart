@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat_category_handler.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
+import 'package:imat_app/pages/customer_service_view.dart';
 import 'package:provider/provider.dart';
 import 'package:imat_app/pages/user_view.dart';
 
@@ -75,7 +76,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.search, size: 24),
                       onPressed: () {
-                        
                         print("Du tryckte på sök");
                       },
                     ),
@@ -86,11 +86,16 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             const Spacer(),
             TextButton.icon(
               onPressed: () {
-                print("Du tryckte på historik");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CustomerServiceView(),
+                  ),
+                );
               },
-              icon: const Icon(Icons.history, color: Colors.black87, size: 36),
+              icon: const Icon(Icons.phone, color: Colors.black87, size: 36),
               label: const Text(
-                "Historik",
+                "Kundservice",
                 style: TextStyle(
                   color: Colors.black87,
                   fontWeight: FontWeight.w600,
@@ -122,7 +127,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 color: Colors.black87,
               ),
               label: const Text(
-                "Logga in",
+                "Användare",
                 style: TextStyle(
                   color: Colors.black87,
                   fontWeight: FontWeight.w600,
@@ -130,9 +135,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               style: TextButton.styleFrom(
+                backgroundColor: Colors.grey.shade200,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
                   vertical: 12,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
                 ),
               ),
             ),
@@ -144,10 +153,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(80);
-  
 }
-void goBack(ImatDataHandler iMat, ImatCategoryHandler catHandler){
-    catHandler.changeCategory(catHandler.start);
-    iMat.selectAllProducts();
-    return;
-  }
+
+void goBack(ImatDataHandler iMat, ImatCategoryHandler catHandler) {
+  catHandler.changeCategory(catHandler.start);
+  iMat.selectAllProducts();
+  return;
+}
