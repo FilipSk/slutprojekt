@@ -43,7 +43,7 @@ class UserView extends StatelessWidget {
                       ),
                     );
                   },
-                  color: const Color.fromARGB(200, 100, 180, 100),
+                  color: const Color.fromARGB(255, 76, 175, 80),
                 ),
                 const SizedBox(width: 75),
                 UserButton(
@@ -56,7 +56,7 @@ class UserView extends StatelessWidget {
                       ),
                     );
                   },
-                  color: const Color.fromARGB(200, 100, 180, 100),
+                  color: const Color.fromARGB(255, 76, 175, 80),
                 ),
               ],
             ),
@@ -74,7 +74,7 @@ class UserView extends StatelessWidget {
                       ),
                     );
                   },
-                  color: const Color.fromARGB(200, 100, 180, 100),
+                  color: const Color.fromARGB(255, 76, 175, 80),
                 ),
                 const SizedBox(width: 75),
                 UserButton(
@@ -87,7 +87,7 @@ class UserView extends StatelessWidget {
                       ),
                     );
                   },
-                  color: const Color.fromARGB(200, 100, 180, 100),
+                  color: const Color.fromARGB(255, 76, 175, 80),
                 ),
               ],
             ),

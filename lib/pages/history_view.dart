@@ -49,7 +49,7 @@ class _HistoryViewState extends State<HistoryView> {
                       // When a user taps on an item the function _selectOrder is called
                       // The Material widget is need to make hovering pliancy effects visible
                       child: Material(
-                        color: const Color.fromARGB(255, 154, 172, 134),
+                        color: const Color.fromARGB(255, 76, 175, 80),
                         child: _ordersList(context, orders, _selectOrder),
                       ),
                     ),
@@ -111,7 +111,10 @@ class _HistoryViewState extends State<HistoryView> {
   Widget _orderInfo(Order order, Function onTap) {
     return ListTile(
       onTap: () => onTap(order),
-      title: Text('Order ${order.orderNumber}, ${_formatDateTime(order.date)}'),
+      title: Text(
+        'Order ${order.orderNumber}, ${_formatDateTime(order.date)}',
+        style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+      ),
     );
   }
 
