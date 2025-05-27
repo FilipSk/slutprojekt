@@ -30,7 +30,7 @@ class UserView extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const MainView()),
                     );
                   },
-                  color: const Color.fromARGB(198, 255, 0, 0),
+                  color: Colors.red,
                 ),
                 const SizedBox(width: 75),
                 UserButton(

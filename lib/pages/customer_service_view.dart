@@ -34,10 +34,10 @@ class CustomerServiceView extends StatelessWidget {
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 30,
-                          vertical: 14,
+                          vertical: 15,
                         ),
                         textStyle: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold,
                         ),
                         shape: RoundedRectangleBorder(
@@ -50,7 +50,7 @@ class CustomerServiceView extends StatelessWidget {
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxHeight: 250),
                       child: Image.asset(
-                        "assets/images/Hank3.png",
+                        "assets/images/kundservice.png",
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -106,7 +106,7 @@ class CustomerServiceView extends StatelessWidget {
                                     ),
                                     SizedBox(height: 8),
                                     Text(
-                                      'Hanks Livs\nStorgatan 12\n123 45 Småstad',
+                                      'Hanks Livs\nStorgatan 12\n123 45 Göteborg',
                                       style: TextStyle(fontSize: 18),
                                     ),
                                   ],
@@ -184,7 +184,7 @@ class CustomerServiceView extends StatelessWidget {
                             ),
                             SizedBox(height: 12),
                             Text(
-                              'Vi erbjuder hemleverans inom Småstad. Beställ innan 14:00 för leverans samma dag. '
+                              'Vi erbjuder hemleverans inom hela Göteborg med omnejd. Beställ innan 14:00 för leverans samma dag. '
                               'Leveranser sker 16:00–20:00 på vardagar.',
                               style: TextStyle(fontSize: 20),
                             ),
@@ -202,7 +202,7 @@ class CustomerServiceView extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '- Fri frakt över 500 kr\n- 49 kr under 500 kr',
+                              '- Alltid fri frakt hos Hanks!',
                               style: TextStyle(fontSize: 20),
                             ),
                           ],
@@ -222,12 +222,12 @@ class CustomerServiceView extends StatelessWidget {
                             ),
                             SizedBox(height: 12),
                             Text(
-                              'Du kan betala med bankkort, Swish eller faktura via Klarna (30 dagar).',
+                              'Du kan endast betala med bankkort',
                               style: TextStyle(fontSize: 20),
                             ),
                             SizedBox(height: 12),
                             Text(
-                              'Alla betalningar sker säkert och krypterat. Vi sparar inte kortuppgifter.',
+                              'Alla betalningar sker säkert och krypterat.',
                               style: TextStyle(fontSize: 20),
                             ),
                           ],
@@ -296,14 +296,14 @@ class CustomerServiceView extends StatelessWidget {
                             ),
                             SizedBox(height: 12),
                             Text(
-                              'Kan jag spåra min leverans?',
+                              'Hur vet jag exakt när min leverans kommer?',
                               style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             Text(
-                              'Ja, du får ett SMS med spårningslänk när ordern skickas.',
+                              'Du får ett SMS 15 minuter innan vi är på plats!',
                               style: TextStyle(fontSize: 20),
                             ),
                           ],

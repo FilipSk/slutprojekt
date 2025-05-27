@@ -14,7 +14,7 @@ class BuyListView extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(16),
-      height: 400, // Maxhöjd på kortet
+      height: 400,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -34,24 +34,24 @@ class BuyListView extends StatelessWidget {
 
             children: [
               SizedBox(
-                width: 150,
+                width: 145,
                 child: Text(
                   "Artikel",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(
-                width: 105,
+                width: 100,
                 child: Text(
                   "Antal",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(
-                width: 80,
+                width: 85,
                 child: Text(
-                  "Summan",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  "Pris",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -66,35 +66,51 @@ class BuyListView extends StatelessWidget {
                 final item = items[index];
 
                 return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                   children: [
-                    SizedBox(width: 150, child: Text(item.product.name)),
-                    SizedBox(
-                      width: 80,
-                      child: Text("${item.amount}".toString()),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          item.product.name,
+                          style: TextStyle(fontSize: 19),
+                        ),
+                      ),
                     ),
-
-                    SizedBox(
-                      width: 80,
-                      child: Text("${item.amount * item.product.price}"),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "${item.amount}",
+                          style: TextStyle(fontSize: 19),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "${(item.amount * item.product.price).toStringAsFixed(2)}:-",
+                          style: TextStyle(fontSize: 19),
+                        ),
+                      ),
                     ),
                   ],
                 );
               },
             ),
           ),
+          Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "summan",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                "Summa:",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
 
               Text(
-                iMat.shoppingCartTotal().toStringAsFixed(2),
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                '${iMat.shoppingCartTotal().toStringAsFixed(2)}:-',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -111,7 +127,7 @@ class BuyListView extends StatelessWidget {
                 ),
                 child: Text(
                   'Tillbaka',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
               ElevatedButton(
@@ -138,8 +154,8 @@ class BuyListView extends StatelessWidget {
                 ),
 
                 child: Text(
-                  "Beställa",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  "Nästa",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
             ],

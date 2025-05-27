@@ -37,7 +37,8 @@ class ShoppingCart extends StatelessWidget {
           ),
           Divider(color: Colors.black),
 
-          Container(height: 500, child: CartView()),
+          Container(height: 550, child: CartView()),
+          SizedBox(height: 20),
           ElevatedButton(
             onPressed:
                 items.isEmpty

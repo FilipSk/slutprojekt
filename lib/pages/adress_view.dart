@@ -61,10 +61,10 @@ class _AdressViewState extends State<AdressView> {
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 30,
-                        vertical: 14,
+                        vertical: 15,
                       ),
                       textStyle: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                       shape: RoundedRectangleBorder(
@@ -163,6 +163,7 @@ class _AdressViewState extends State<AdressView> {
                               0,
                               0,
                             ),
+                            foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(
                               horizontal: 30,
                               vertical: 20,
@@ -177,7 +178,12 @@ class _AdressViewState extends State<AdressView> {
                         ElevatedButton(
                           onPressed: _saveCustomer,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.green,
+                            backgroundColor: const Color.fromARGB(
+                              255,
+                              76,
+                              175,
+                              80,
+                            ),
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(
                               horizontal: 30,

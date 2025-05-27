@@ -57,10 +57,10 @@ class _PaymentViewState extends State<PaymentView> {
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 30,
-                        vertical: 14,
+                        vertical: 15,
                       ),
                       textStyle: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                       shape: RoundedRectangleBorder(
@@ -173,6 +173,7 @@ class _PaymentViewState extends State<PaymentView> {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+              foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             ),
             child: const Text("Avbryt", style: TextStyle(fontSize: 20)),
@@ -181,7 +182,7 @@ class _PaymentViewState extends State<PaymentView> {
           ElevatedButton(
             onPressed: _saveCard,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green,
+              backgroundColor: const Color.fromARGB(255, 76, 175, 80),
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             ),

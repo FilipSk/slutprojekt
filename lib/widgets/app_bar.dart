@@ -47,7 +47,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                   const SizedBox(width: 12),
                   const Text(
-                    "Hanks livs",
+                    "Hanks Livs",
                     style: TextStyle(
                       color: Colors.black87,
                       fontSize: 34,

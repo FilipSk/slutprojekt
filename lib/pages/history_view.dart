@@ -81,7 +81,7 @@ class _HistoryViewState extends State<HistoryView> {
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               textStyle: const TextStyle(
-                fontSize: 16,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
               shape: RoundedRectangleBorder(

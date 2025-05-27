@@ -30,22 +30,23 @@ class CheakCustomerDetail extends StatelessWidget {
           //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           // ),
           const CustomerDetails(),
+          SizedBox(height: 114),
           Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                ' Summan att ska betalas',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                'Summa:',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
 
               Text(
-                iMat.shoppingCartTotal().toStringAsFixed(2),
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                '${iMat.shoppingCartTotal().toStringAsFixed(2)}:-',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ],
           ), //CustomerDetails(), här ska Emil anropa sin funktion
-
+          SizedBox(height: 10),
           Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,7 +61,7 @@ class CheakCustomerDetail extends StatelessWidget {
 
                 child: Text(
                   "Tillbaka",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
               ElevatedButton(
@@ -88,7 +89,7 @@ class CheakCustomerDetail extends StatelessWidget {
                 ),
                 child: Text(
                   "Nästa",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
             ],

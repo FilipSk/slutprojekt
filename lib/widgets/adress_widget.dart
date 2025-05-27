@@ -44,7 +44,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Redigera Kundinformation',
+          'Leveransuppgifter',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 16),
@@ -84,23 +84,58 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ElevatedButton(
-                        onPressed: _saveCustomer,
+                        onPressed: () => setState(() => isEditing = false),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
+                          backgroundColor: Colors.red,
+
                           foregroundColor: Colors.white,
                         ),
-                        child: const Text('Spara'),
+
+                        child: Text(
+                          "Avbryt",
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       const SizedBox(width: 12),
-                      TextButton(
-                        onPressed: () => setState(() => isEditing = false),
-                        child: const Text('Avbryt'),
+                      ElevatedButton(
+                        onPressed: _saveCustomer,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(
+                            255,
+                            76,
+                            175,
+                            80,
+                          ),
+                          foregroundColor: Colors.white,
+                        ),
+
+                        child: Text(
+                          "Spara",
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ],
                   )
                   : ElevatedButton(
                     onPressed: () => setState(() => isEditing = true),
-                    child: const Text('Ändra'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 19, 106, 255),
+                      foregroundColor: Colors.white,
+                    ),
+
+                    child: Text(
+                      "Ändra",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
         ),
       ],

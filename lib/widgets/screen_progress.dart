@@ -36,13 +36,13 @@ class ScreenProgress extends StatelessWidget {
             SizedBox(width: 10),
             Padding(padding: const EdgeInsets.only(left: 12.0), child: text1()),
 
-            SizedBox(width: 163),
+            SizedBox(width: 151),
             Padding(padding: const EdgeInsets.only(left: 12.0), child: text2()),
 
-            SizedBox(width: 163),
+            SizedBox(width: 150),
             Padding(padding: const EdgeInsets.only(left: 12.0), child: text3()),
 
-            SizedBox(width: 163),
+            SizedBox(width: 162),
             Padding(padding: const EdgeInsets.only(left: 12.0), child: text4()),
           ],
         ),
@@ -73,19 +73,19 @@ class ScreenProgress extends StatelessWidget {
   }
 
   Widget text1() {
-    return Text("Varukorg", style: TextStyle(fontSize: 16));
+    return Text("Varukorg", style: TextStyle(fontSize: 18));
   }
 
   Widget text2() {
-    return Text("Adress", style: TextStyle(fontSize: 16));
+    return Text("Leverans", style: TextStyle(fontSize: 18));
   }
 
   Widget text3() {
-    return Text("Betallning", style: TextStyle(fontSize: 16));
+    return Text("Betalning", style: TextStyle(fontSize: 18));
   }
 
   Widget text4() {
-    return Text("Klart", style: TextStyle(fontSize: 16));
+    return Text("Klart", style: TextStyle(fontSize: 18));
   }
 
   Widget spacer() {

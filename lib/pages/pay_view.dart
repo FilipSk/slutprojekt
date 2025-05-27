@@ -36,29 +36,29 @@ class PayView extends StatelessWidget {
               children: [
                 //CustomerDetails(), här ska Emil anropa sin funktion
                 const PaymentDetails(),
-
+                SizedBox(height: 54),
                 Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      ' Summan att ska betalas',
+                      'Summa:',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
 
                     Text(
-                      iMat.shoppingCartTotal().toStringAsFixed(2),
+                      '${iMat.shoppingCartTotal().toStringAsFixed(2)}:-',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 100),
+                SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -72,7 +72,7 @@ class PayView extends StatelessWidget {
                       child: Text(
                         "Tillbaka",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -109,7 +109,7 @@ class PayView extends StatelessWidget {
                       child: Text(
                         "Betala",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
