@@ -9,8 +9,8 @@ import 'package:provider/provider.dart';
 
 class Centerview extends StatelessWidget {
   final bool hasSearchText;
-  final bool favorites;
-  const Centerview({super.key, required this.hasSearchText, required this.favorites});
+  //final bool favorites;
+  const Centerview({super.key, required this.hasSearchText});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class Centerview extends StatelessWidget {
     final products = iMat.selectProducts;
 
     if (!hasSearchText) {
-      if (!favorites){
-        
-      }
+      // if (!favorites){
+
+      // }
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
