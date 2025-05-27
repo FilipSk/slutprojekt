@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/app_theme.dart';
+import 'package:imat_app/model/imat_category_handler.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:imat_app/widgets/categories.dart';
 import 'package:imat_app/widgets/product_card.dart';
@@ -11,7 +12,7 @@ class Products extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var iMat = Provider.of<ImatDataHandler>(context, listen: true);
-    
+    var catHandler = context.watch<ImatCategoryHandler>();
     var products = iMat.selectProducts;
     return 
     Scaffold(
@@ -22,16 +23,9 @@ class Products extends StatelessWidget {
         
         //shrinkWrap: true,
         slivers: [
-          SliverAppBar(title: Text("Kategorier", style: const TextStyle(fontSize: AppTheme.fontLarge,
-           //decoration: TextDecoration.underline
-           )
-           
-           ),
-           shape: Border(bottom: BorderSide(
-              color: Colors.black,
 
-            )),
-           ),
+          SliverAppBar(title: Text(catHandler.currentCategories.getName(), style: const TextStyle(fontSize: AppTheme.fontLarge,)),
+          shape: Border(bottom: BorderSide(color: Colors.black,)),),
           Categories(),
           SliverAppBar(
             title: Text(
@@ -53,7 +47,7 @@ class Products extends StatelessWidget {
             crossAxisCount: 4, // 4 kolumner
             crossAxisSpacing: AppTheme.paddingSmall,
             mainAxisSpacing: AppTheme.paddingMedium,
-            childAspectRatio: 3/4,
+            childAspectRatio: 0.6,
           ),
           itemBuilder: (context, index) {
             final product = products[index];

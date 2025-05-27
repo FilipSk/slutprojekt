@@ -27,7 +27,7 @@ class NavBar extends StatelessWidget {
           ),
         SizedBox(width: 50,),
         //Text("data"),
-        SizedBox(width: 800, height: 65, 
+        SizedBox(width: 600, height: 65, 
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: [

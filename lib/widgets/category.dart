@@ -39,7 +39,7 @@ class Category extends StatelessWidget {
         child: Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Column(
-        spacing: AppTheme.paddingMediumSmall,
+        //spacing: AppTheme.paddingMediumSmall,
         children: [
           Expanded(child: ClipRRect(
             borderRadius: BorderRadius.circular(AppTheme.borderRadius),

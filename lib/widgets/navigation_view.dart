@@ -5,7 +5,7 @@ class NavigationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(width: 280 ,child: Placeholder(),);
+    return SizedBox(width: 200 ,child: Placeholder(),);
     
   }
 }

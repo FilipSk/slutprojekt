@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/model/imat/product.dart';
+import 'package:imat_app/model/imat_category_handler.dart';
+import 'package:imat_app/model/imat_data_handler.dart';
+import 'package:provider/provider.dart';
 import 'package:imat_app/pages/user_view.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -9,7 +13,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
+    var iMat = context.watch<ImatDataHandler>();
+    var catHandler = context.watch<ImatCategoryHandler>();
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 4,
@@ -22,7 +27,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             InkWell(
               onTap: () {
-                print("Du tryckte på loggan eller texten");
+                goBack(iMat, catHandler);
+                //print("Du tryckte på loggan eller texten");
               },
               borderRadius: BorderRadius.circular(30),
               child: Row(
@@ -137,4 +143,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(80);
+  
 }
+void goBack(ImatDataHandler iMat, ImatCategoryHandler catHandler){
+    catHandler.changeCategory(catHandler.start);
+    iMat.selectAllProducts();
+    return;
+  }

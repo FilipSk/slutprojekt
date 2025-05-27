@@ -23,7 +23,11 @@ class Centerview extends StatelessWidget {
         children: [
           const NavBar(),
           const SizedBox(height: 16),
-          SizedBox(width: 1100, height: 800, child: const Products()),
+          SizedBox(
+            width: 1100,
+            height: 600,
+            child: const Products(),
+          ),
         ],
       );
     }
