@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:imat_app/pages/end_page_view.dart';
+import 'package:imat_app/widgets/payment_widget.dart';
 import 'package:imat_app/widgets/screen_progress.dart';
 import 'package:provider/provider.dart';
 
@@ -30,28 +31,34 @@ class PayView extends StatelessWidget {
           //   "leverans and beställning",
           //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           // ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                ' Summan att ska betalas',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-
-              Text(
-                iMat.shoppingCartTotal().toStringAsFixed(2),
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          Divider(),
           Expanded(
             child: Column(
               children: [
-                //CardDetails(), Emil ska anropa sin funkrion här
-                Spacer(),
+                //CustomerDetails(), här ska Emil anropa sin funktion
+                const PaymentDetails(),
 
-                //AccountView(), alternativ man kan anropa denna också, det beror på hur användare är definierat
+                Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      ' Summan att ska betalas',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    Text(
+                      iMat.shoppingCartTotal().toStringAsFixed(2),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 100),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -73,7 +80,9 @@ class PayView extends StatelessWidget {
 
                     ElevatedButton(
                       onPressed: () {
+                        iMat.placeOrder();
                         iMat.shoppingCartClear();
+
                         showDialog(
                           context: context,
                           builder: (context) {

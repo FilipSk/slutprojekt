@@ -23,11 +23,7 @@ class Centerview extends StatelessWidget {
         children: [
           const NavBar(),
           const SizedBox(height: 16),
-          SizedBox(
-            width: 1100,
-            height: 800,
-            child: const Products(),
-          ),
+          SizedBox(width: 1100, height: 800, child: const Products()),
         ],
       );
     }
@@ -39,7 +35,11 @@ class Centerview extends StatelessWidget {
           SliverAppBar(
             title: const Text(
               "Sökresultat, rensa sökning för att återgå",
-              style: TextStyle(fontSize: AppTheme.fontLarge, backgroundColor: Colors.white70, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: AppTheme.fontLarge,
+                backgroundColor: Colors.white70,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             floating: true,
             snap: true,
@@ -68,7 +68,7 @@ class Centerview extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(32),
                   child: Text(
-                    "Inga produkter matchar din sökning.",
+                    "Vad menade du med det där?",
                     style: TextStyle(fontSize: 20, color: Colors.grey),
                   ),
                 ),

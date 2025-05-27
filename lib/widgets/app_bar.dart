@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/pages/user_view.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Function(String) onSearchChanged;
@@ -61,7 +62,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     hintText: "Sök produkter...",
                     border: InputBorder.none,
                     isDense: true,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.search, size: 24),
                       onPressed: () {
@@ -88,7 +92,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               style: TextButton.styleFrom(
                 backgroundColor: Colors.grey.shade200,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -97,9 +104,16 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             const SizedBox(width: 12),
             TextButton.icon(
               onPressed: () {
-                print("Du tryckte på konto");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const UserView()),
+                );
               },
-              icon: const Icon(Icons.account_circle, size: 36, color: Colors.black87),
+              icon: const Icon(
+                Icons.account_circle,
+                size: 36,
+                color: Colors.black87,
+              ),
               label: const Text(
                 "Logga in",
                 style: TextStyle(
@@ -109,7 +123,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
               ),
             ),
           ],

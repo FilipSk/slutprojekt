@@ -77,7 +77,7 @@ class BuyListView extends StatelessWidget {
 
                     SizedBox(
                       width: 80,
-                      child: Text(iMat.shoppingCartSum().toStringAsFixed(2)),
+                      child: Text("${item.amount * item.product.price}"),
                     ),
                   ],
                 );

@@ -21,35 +21,60 @@ class ProductCard extends StatelessWidget {
         hoverColor: AppTheme.hoverColor,
         onTap: () {},
         child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10, top: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: ClipRRect(
-              borderRadius: BorderRadius.circular(AppTheme.borderRadius),
-              child: iMat.getImage(product),)
-            
-            ),
-            const SizedBox(height: 8),
-            Text(product.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: AppTheme.fontBig)),
-            Text('${product.price.toStringAsFixed(2)} kr', style: const TextStyle(fontSize: AppTheme.fontMedium)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(onPressed: () => {
-                  iMat.shoppingCartRemove(ShoppingItem(product))},
-                  icon: Icon(Icons.remove), iconSize: AppTheme.iconLarge),
-                Text("x"),
-                IconButton(onPressed: () => {
-                  iMat.shoppingCartAdd(ShoppingItem(product))},
-                  icon: Icon(Icons.add), iconSize: AppTheme.iconLarge)
-            ],)
-            
-          ],
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            bottom: 10,
+            top: 10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+                  child: iMat.getImage(product),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                product.name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: AppTheme.fontBig,
+                ),
+              ),
+              Text(
+                '${product.price.toStringAsFixed(2)} kr',
+                style: const TextStyle(fontSize: AppTheme.fontMedium),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed:
+                        () => {
+                          iMat.shoppingCartUpdate(
+                            ShoppingItem(product),
+                            delta: -1,
+                          ),
+                        },
+                    icon: Icon(Icons.remove),
+                    iconSize: AppTheme.iconLarge,
+                  ),
+                  Text("x"),
+                  IconButton(
+                    onPressed:
+                        () => {iMat.shoppingCartAdd(ShoppingItem(product))},
+                    icon: Icon(Icons.add),
+                    iconSize: AppTheme.iconLarge,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-      )
-      
     );
   }
 }

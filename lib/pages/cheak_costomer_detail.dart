@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:imat_app/pages/pay_view.dart';
+import 'package:imat_app/widgets/adress_widget.dart';
+import 'package:imat_app/widgets/payment_widget.dart';
 import 'package:imat_app/widgets/screen_progress.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +29,8 @@ class CheakCustomerDetail extends StatelessWidget {
           //   "leverans and beställning",
           //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           // ),
+          const CustomerDetails(),
+          Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -40,9 +44,8 @@ class CheakCustomerDetail extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
-          ),
-          Divider(),
-          //CustomerDetails(), här ska Emil anropa sin funktion
+          ), //CustomerDetails(), här ska Emil anropa sin funktion
+
           Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
