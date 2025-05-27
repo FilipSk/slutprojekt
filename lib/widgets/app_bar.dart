@@ -3,6 +3,7 @@ import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat_category_handler.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:imat_app/pages/customer_service_view.dart';
+import 'package:imat_app/pages/main_view.dart';
 import 'package:provider/provider.dart';
 import 'package:imat_app/pages/user_view.dart';
 
@@ -28,8 +29,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             InkWell(
               onTap: () {
-                goBack(iMat, catHandler);
-                //print("Du tryckte på loggan eller texten");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MainView()),
+                );
               },
               borderRadius: BorderRadius.circular(30),
               child: Row(
