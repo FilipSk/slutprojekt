@@ -26,10 +26,9 @@ class Centerview extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const FavNavBar(),
-          const SizedBox(height: 16),
           SizedBox(
-            width: 1100,
-            height: 600,
+            width: 1400,
+            height: 850,
             child: const Favourites(),
           ),
         ],
@@ -39,10 +38,9 @@ class Centerview extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const NavBar(),
-          const SizedBox(height: 0),
           SizedBox(
-            width: 1100,
-            height: 600,
+            width: 1400,
+            height: 850,
             child: const Products(),
           ),
         ],

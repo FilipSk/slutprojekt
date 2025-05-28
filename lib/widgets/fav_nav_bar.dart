@@ -19,31 +19,30 @@ class FavNavBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //Tillbaka knapp
-          TextButton.icon(
-              onPressed: () {
+          ElevatedButton.icon(
+                      onPressed: () {
                 catHandler.toggleFavorite();
                  goBack(iMat,catHandler);
               },
-              icon: const Icon(Icons.exit_to_app_outlined, color: Color.fromARGB(221, 0, 0, 0), size: 36),
-              label: const Text(
-                "Tillbaka",
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25,
-                ),
-              ),
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.grey.shade200,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 12,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
+                      icon: const Icon(Icons.arrow_back),
+                      label: const Text('Tillbaka'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 15,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+          
         // Card(
         //   color: AppTheme.cardColor,
         //   elevation: 4,

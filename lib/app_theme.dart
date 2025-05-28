@@ -12,11 +12,13 @@ class AppTheme {
   static const double fontMedium = 20;
   static const double fontBig = 30;
   static const double fontLarge = 40;
+static const double fontHuge = 50;
 
   static const double iconSmall = 10;
   static const double iconMedium = 20;
   static const double iconBig = 30;
   static const double iconLarge = 40;
+  static const double iconHuge = 50;
 
   static const double borderRadius = 12;
 
