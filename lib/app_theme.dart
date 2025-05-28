@@ -14,6 +14,7 @@ class AppTheme {
   static const double fontLarge = 40;
 static const double fontHuge = 50;
 
+  static const double fontNavBar = 20;
   static const double iconSmall = 10;
   static const double iconMedium = 20;
   static const double iconBig = 30;
@@ -26,6 +27,7 @@ static const double fontHuge = 50;
   static Color cardColor = const Color.fromARGB(255, 231, 231, 231);
   static Color hoverColor = Colors.blue.withAlpha(30);
   static Color splashColor = const Color.fromARGB(255, 0, 0, 0).withAlpha(30);
+
 
 
 }

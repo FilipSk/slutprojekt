@@ -128,7 +128,7 @@ class ProductCard extends StatelessWidget {
     var icon =
         isFavorite ? ElevatedButton.icon(
                       onPressed: () => iMat.shoppingCartAdd(ShoppingItem(product)),
-                      label: const Text('Lägg till i varukorg'),
+                      label: const Text('Lägg till i varukorg', softWrap: true, textWidthBasis: TextWidthBasis.parent,),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                         foregroundColor: Colors.white,
@@ -137,7 +137,7 @@ class ProductCard extends StatelessWidget {
                           vertical: 15,
                         ),
                         textStyle: const TextStyle(
-                          fontSize: 25,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                         shape: RoundedRectangleBorder(

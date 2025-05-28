@@ -28,7 +28,7 @@ class Centerview extends StatelessWidget {
           const FavNavBar(),
           SizedBox(
             width: 1400,
-            height: 850,
+            height: 630,
             child: const Favourites(),
           ),
         ],
@@ -39,8 +39,8 @@ class Centerview extends StatelessWidget {
         children: [
           const NavBar(),
           SizedBox(
-            width: 1400,
-            height: 850,
+            width: 1200,
+            height: 630,
             child: const Products(),
           ),
         ],

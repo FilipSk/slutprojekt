@@ -33,7 +33,7 @@ class NavBar extends StatelessWidget {
                           vertical: 15,
                         ),
                         textStyle: const TextStyle(
-                          fontSize: 25,
+                          fontSize: AppTheme.fontNavBar,
                           fontWeight: FontWeight.bold,
                         ),
                         shape: RoundedRectangleBorder(
@@ -45,7 +45,7 @@ class NavBar extends StatelessWidget {
         if (!catHandler.currentCategories.getStart())
         ElevatedButton.icon(
                       onPressed: () => goBack(iMat, catHandler),
-                      icon: const Icon(Icons.arrow_back),
+                      icon: const Icon(Icons.arrow_back, size: 30),
                       label: const Text('Tillbaka'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
@@ -55,7 +55,7 @@ class NavBar extends StatelessWidget {
                           vertical: 15,
                         ),
                         textStyle: const TextStyle(
-                          fontSize: 25,
+                          fontSize: AppTheme.fontNavBar,
                           fontWeight: FontWeight.bold,
                         ),
                         shape: RoundedRectangleBorder(
@@ -86,9 +86,9 @@ class NavBar extends StatelessWidget {
         //       child: IconButton(onPressed: () => {catHandler.toggleFavorite(), iMat.selectFavorites()}, icon: Icon(Icons.star_border_outlined)),),
         //     )
         // ),
-        SizedBox(width: 25,),
+        SizedBox(width: 10,),
         //Text("data"),
-        SizedBox(width: 800, height: 50, 
+        SizedBox(width: 560, height: 50,
         child: ListView(
           
           scrollDirection: Axis.horizontal,
@@ -102,18 +102,19 @@ class NavBar extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.black87,
                               fontWeight: FontWeight.w600,
-                              fontSize: 25,
+                              fontSize: AppTheme.fontNavBar,
                             ),
                           ),
+                      
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 239, 239, 239),
                         foregroundColor: Colors.black,
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 15,
+                          horizontal: 10,
+                          vertical: 0,
                         ),
                         textStyle: const TextStyle(
-                          fontSize: 25,
+                          fontSize: AppTheme.fontNavBar,
                           fontWeight: FontWeight.bold,
                         ),
                         shape: RoundedRectangleBorder(
@@ -133,18 +134,18 @@ class NavBar extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.black87,
                               fontWeight: FontWeight.bold,
-                              fontSize: 25,
+                              fontSize: AppTheme.fontNavBar,
                             ),
                           ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 239, 239, 239),
                         foregroundColor: Colors.black,
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
+                          horizontal: 10,
                           vertical: 15,
                         ),
                         textStyle: const TextStyle(
-                          fontSize: 25,
+                          fontSize: AppTheme.fontNavBar,
                           fontWeight: FontWeight.bold,
                         ),
                         shape: RoundedRectangleBorder(

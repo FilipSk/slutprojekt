@@ -34,7 +34,7 @@ class FavNavBar extends StatelessWidget {
                           vertical: 15,
                         ),
                         textStyle: const TextStyle(
-                          fontSize: 25,
+                          fontSize: AppTheme.fontNavBar,
                           fontWeight: FontWeight.bold,
                         ),
                         shape: RoundedRectangleBorder(
