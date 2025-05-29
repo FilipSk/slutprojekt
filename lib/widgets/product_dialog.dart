@@ -22,8 +22,8 @@ class ProductDialog extends StatelessWidget {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: SizedBox(
-        width: 800,
-        height: 600,
+        width: 900,
+        height: 700,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

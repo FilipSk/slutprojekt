@@ -70,6 +70,7 @@ class ShoppingCart extends StatelessWidget {
                       : () {
                         showDialog(
                           context: context,
+                          barrierDismissible: false,
                           builder: (context) {
                             return Dialog(
                               shape: RoundedRectangleBorder(
