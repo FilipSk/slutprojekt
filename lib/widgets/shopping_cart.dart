@@ -38,12 +38,12 @@ class ShoppingCart extends StatelessWidget {
             ),
             Divider(color: Colors.black),
 
-            Container(height: 550, child: CartView()),
-            SizedBox(height: 20),
+            Container(height: 530, child: CartView()),
+            Divider(color: Colors.black),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
-                vertical: 2,
+                vertical: 0,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
