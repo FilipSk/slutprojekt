@@ -43,7 +43,8 @@ class _MainViewState extends State<MainView> {
           //const NavigationView(),
           Expanded(
             flex: 3,
-            child: Centerview(hasSearchText: _searchText.isNotEmpty),
+            child: Padding(padding: EdgeInsets.only(left: 50,), child: 
+            Centerview(hasSearchText: _searchText.isNotEmpty),)
           ),
           ShoppingCart(iMat: iMat),
         ],

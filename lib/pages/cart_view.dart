@@ -39,7 +39,7 @@ class CartView extends StatelessWidget {
                           );
                         },
                       ),
-                      Text('${item.amount}'),
+                      Text('${item.amount.toInt()}'),
                       AddButton(
                         onPressed: () {
                           iMat.shoppingCartAdd(ShoppingItem(item.product));

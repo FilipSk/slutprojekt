@@ -17,7 +17,7 @@ class Favourites extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(automaticallyImplyLeading: false, title: Text("Favoriter", style: const TextStyle(fontSize: AppTheme.fontLarge)),shape: Border(bottom: BorderSide(color: Colors.black,)),),
+          SliverAppBar(automaticallyImplyLeading: false, title: Text("Favoriter", style: const TextStyle(fontSize: AppTheme.fontHuge, fontWeight: FontWeight.bold,)),shape: Border(bottom: BorderSide(color: Colors.black,)),),
           SliverGrid.builder(
             itemCount: products.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

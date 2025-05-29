@@ -25,7 +25,9 @@ class Products extends StatelessWidget {
         //shrinkWrap: true,
         slivers: [
 
-          SliverAppBar(automaticallyImplyLeading: false, title: Text(catHandler.currentCategories.getName(), style: const TextStyle(fontSize: AppTheme.fontLarge,)),
+          SliverAppBar(automaticallyImplyLeading: false, 
+          title: Text(catHandler.currentCategories.getName(), 
+          style: const TextStyle(fontSize: AppTheme.fontHuge, fontWeight: FontWeight.bold,)) , 
           shape: Border(bottom: BorderSide(color: Colors.black,)),),
           Categories(),
           SliverAppBar(automaticallyImplyLeading: false,

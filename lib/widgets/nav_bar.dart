@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/product.dart';
@@ -16,32 +18,52 @@ class NavBar extends StatelessWidget {
     Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //Tillbaka knapp
-        
-        TextButton.icon(
-              onPressed: () {
-                goBack(iMat, catHandler);
+        ElevatedButton.icon(
+                      onPressed: () {
+                catHandler.toggleFavorite();
+                iMat.selectFavorites();
               },
-              icon: const Icon(Icons.exit_to_app_outlined, color: Colors.black87, size: 36),
-              label: const Text(
-                "Tillbaka",
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25,
-                ),
-              ),
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.grey.shade200,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 12,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
+                      icon: const Icon(Icons.star_border_outlined, size: 30),
+                      label: const Text('Favoriter'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.yellow,
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 15,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: AppTheme.fontNavBar,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+        SizedBox(width: 10,),
+        if (!catHandler.currentCategories.getStart())
+        ElevatedButton.icon(
+                      onPressed: () => goBack(iMat, catHandler),
+                      icon: const Icon(Icons.arrow_back, size: 30),
+                      label: const Text('Tillbaka'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 15,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: AppTheme.fontNavBar,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+        
         // Card(
         //   color: AppTheme.cardColor,
         //   elevation: 4,
@@ -52,31 +74,9 @@ class NavBar extends StatelessWidget {
         //         ),
         //     )
         // ),
-        TextButton.icon(
-              onPressed: () {
-                catHandler.toggleFavorite();
-                iMat.selectFavorites();
-              },
-              icon: const Icon(Icons.star_border_outlined, color: Color.fromARGB(221, 0, 0, 0), size: 36),
-              label: const Text(
-                "Favoriter",
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25,
-                ),
-              ),
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.grey.shade200,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 12,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
+        
+        
+        
         // Card(
         //   color: AppTheme.cardColor,
         //   elevation: 4,
@@ -86,88 +86,75 @@ class NavBar extends StatelessWidget {
         //       child: IconButton(onPressed: () => {catHandler.toggleFavorite(), iMat.selectFavorites()}, icon: Icon(Icons.star_border_outlined)),),
         //     )
         // ),
-        SizedBox(width: 25,),
+        SizedBox(width: 10,),
         //Text("data"),
-        SizedBox(width: 500, height: 50, 
+        SizedBox(width: 560, height: 50,
         child: ListView(
           
           scrollDirection: Axis.horizontal,
           children: [
             for (var catParent in catHandler.currentCategories.getParents())
-            TextButton.icon(
-              onPressed: () {
-                findProducts(catParent, iMat, catHandler);
-              },
-              //icon: const Icon(Icons.star_border_outlined, color: Colors.black87, size: 36),
-              label: Text(
-                "${catParent.getName()}/",
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25,
-                ),
-              ),
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.grey.shade200,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 12,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
-            
-            // Card(
-            //   color: AppTheme.cardColor,
+            Padding(padding: EdgeInsets.only(left: 10),
+            child: ElevatedButton.icon(
+                      onPressed: () => findProducts(catParent, iMat, catHandler),
+                      label: Text(
+                            "${catParent.getName()}/",
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.w600,
+                              fontSize: AppTheme.fontNavBar,
+                            ),
+                          ),
+                      
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 239, 239, 239),
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 0,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: AppTheme.fontNavBar,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
               
-            //   child: InkWell(
-            //     borderRadius: BorderRadius.circular(12),
-            //     splashColor: AppTheme.splashColor,
-            //     hoverColor: AppTheme.hoverColor,
-            //     onTap: () => {findProducts(catParent, iMat, catHandler)},
-            //     child: Padding(padding: const EdgeInsets.only(left: 20, right: 20, bottom: 0, top: 10), 
-            //     child: Text("${catParent.getName()}/", 
-            //     style: const TextStyle(fontSize: AppTheme.fontMedium)),)
-            //   ),
-            // ),
-
+            
           
-        // TextButton(
-
-        //       label: Text(
-        //         catHandler.currentCategories.getName(),
-        //         style: TextStyle(
-        //           color: Colors.black87,
-        //           fontWeight: FontWeight.w600,
-        //           fontSize: 25,
-        //         ),
-        //       ),
-        //       style: TextButton.styleFrom(
-        //         backgroundColor: Colors.grey.shade200,
-        //         padding: const EdgeInsets.symmetric(
-        //           horizontal: 20,
-        //           vertical: 12,
-        //         ),
-        //         shape: RoundedRectangleBorder(
-        //           borderRadius: BorderRadius.circular(12),
-        //         ),
-        //       ),
-        //     ),
-        // Card(
-        //       color: AppTheme.hoverColor,
-              
-        //       child: InkWell(
-        //         borderRadius: BorderRadius.circular(12),
-        //         splashColor: AppTheme.splashColor,
-        //         hoverColor: AppTheme.hoverColor,
-        //         child: Padding(padding: const EdgeInsets.only(left: 20, right: 20, bottom: 0, top: 10), 
-        //         child: Text(catHandler.currentCategories.getName(), 
-        //         style: const TextStyle(fontSize: AppTheme.fontMedium)),)
-        //       ),
-        //     ),
+            ),
+            Padding(padding: EdgeInsets.only(left: 10), child: 
+            ElevatedButton.icon(
+              onPressed: null,
+                      label: Text(
+                            catHandler.currentCategories.getName(),
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontSize: AppTheme.fontNavBar,
+                            ),
+                          ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 239, 239, 239),
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 15,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: AppTheme.fontNavBar,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
             
+            ),
             ],
         ),
         ),
@@ -196,6 +183,20 @@ class NavBar extends StatelessWidget {
   String rubrik(ImatCategoryHandler catHandler){
     return catHandler.currentCategories.getName();
   }
+  Widget _backButton(context) {
+    var iMat = Provider.of<ImatCategoryHandler>(context, listen: false);
+    bool start = false;
+    if (iMat.currentCategories.getStart())
+    {
+      start = true;
+    }    
+
+    var icon =
+        start
+            ? const Icon(Icons.star, color: Colors.orange, size: AppTheme.iconHuge,)
+            : const Icon(Icons.star_border, color: Colors.orange, size: AppTheme.iconHuge,);
+    return Placeholder();
+  }
 }
 void goBack(ImatDataHandler iMat, ImatCategoryHandler catHandler){
     catHandler.changeCategory(catHandler.currentCategories.getParent());
@@ -211,19 +212,4 @@ void goBack(ImatDataHandler iMat, ImatCategoryHandler catHandler){
     }
     iMat.selectSelection(list);
   }
-// Widget _togglefavoriteButton(Product p, context) {
-//     var iMat = Provider.of<ImatCategoryHandler>(context, listen: false);
-//     var isFavorite = iMat.isFavorite(p);
 
-//     var icon =
-//         isFavorite
-//             ? Icon(Icons.star, color: Colors.orange)
-//             : Icon(Icons.star_border, color: Colors.orange);
-
-//     return IconButton(
-//       onPressed: () {
-//         catHa.toggleFavorite(p);
-//       },
-//       icon: icon,
-//     );
-//   }
