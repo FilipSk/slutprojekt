@@ -19,7 +19,7 @@ class CartView extends StatelessWidget {
       children: [
         for (final item in items.reversed)
           Card(
-            margin: const EdgeInsets.symmetric(vertical: 10),
+            margin: const EdgeInsets.symmetric(vertical: 4),
             elevation: 3,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
@@ -119,10 +119,11 @@ class CartView extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
+                        color: Colors.white,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.redAccent,
+                      backgroundColor: Colors.red,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 14,
