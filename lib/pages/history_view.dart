@@ -103,17 +103,27 @@ class _HistoryViewState extends State<HistoryView> {
           'Senaste Ordrarna:',
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
-        for (final order in orders) _orderInfo(order, onTap),
+        for (final order in orders)
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: _orderInfo(order, onTap),
+          ),
       ],
     );
   }
 
   Widget _orderInfo(Order order, Function onTap) {
+    final isSelected = _selectedOrder?.orderNumber == order.orderNumber;
+
     return ListTile(
+      selected: isSelected,
+      selectedTileColor: const Color.fromARGB(235, 10, 215, 123),
+      tileColor: const Color.fromARGB(176, 84, 197, 88),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       onTap: () => onTap(order),
       title: Text(
-        'Order ${order.orderNumber}, ${_formatDateTime(order.date)}',
-        style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+        'Order ${order.orderNumber}\n${_formatDateTime(order.date)}',
+        style: TextStyle(color: Colors.white),
       ),
     );
   }
@@ -255,7 +265,7 @@ class _HistoryViewState extends State<HistoryView> {
                             Text('x'),
                             const SizedBox(width: 50),
                             Text(
-                              '${(item.product.price * item.amount).toStringAsFixed(2)} kr',
+                              '${(item.product.price * item.amount).toStringAsFixed(2)}:-',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
@@ -278,7 +288,7 @@ class _HistoryViewState extends State<HistoryView> {
                           ),
                         ),
                         Text(
-                          '${order.getTotal().toStringAsFixed(2)} kr',
+                          '${order.getTotal().toStringAsFixed(2)}:-',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
