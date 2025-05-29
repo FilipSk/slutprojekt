@@ -1,11 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat/shopping_item.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
-import 'package:imat_app/widgets/add_button.dart';
-import 'package:imat_app/widgets/delete_button.dart';
-import 'package:imat_app/widgets/remove_button.dart';
 import 'package:provider/provider.dart';
 
 class CartView extends StatelessWidget {
@@ -17,45 +15,125 @@ class CartView extends StatelessWidget {
     var items = iMat.getShoppingCart().items;
 
     return ListView(
+      padding: const EdgeInsets.all(12),
       children: [
-        for (final item in items)
+        for (final item in items.reversed)
           Card(
-            child: ListTile(
-              title: Column(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            elevation: 3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    item.product.name,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  _buildProductImage(iMat, item.product),
+                  const SizedBox(width: 12),
+
+                  /// Expanded för namn och kvantitet
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          item.product.name,
+                          style: const TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 12),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed:
+                                  () => iMat.shoppingCartUpdate(
+                                    ShoppingItem(item.product),
+                                    delta: -1,
+                                  ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                foregroundColor: Colors.white,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                  vertical: 10,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              child: const Icon(Icons.remove),
+                            ),
+                            const SizedBox(width: 16),
+                            Text(
+                              '${item.amount.toInt()}',
+                              style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(width: 16),
+                            ElevatedButton(
+                              onPressed:
+                                  () => iMat.shoppingCartAdd(
+                                    ShoppingItem(item.product),
+                                  ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.green,
+                                foregroundColor: Colors.white,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                  vertical: 10,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              child: const Icon(Icons.add),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  Row(
-                    spacing: 12,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      RemoveButton(
-                        onPressed: () {
-                          iMat.shoppingCartUpdate(
-                            ShoppingItem(item.product),
-                            delta: -1.0,
-                          );
-                        },
+
+                  const SizedBox(width: 12),
+
+                  /// Ta bort-knapp
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      iMat.shoppingCartRemove(item);
+                    },
+                    icon: const Icon(
+                      Icons.delete,
+                      size: 24,
+                      color: Colors.white,
+                    ),
+                    label: const Text(
+                      'Ta bort',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
                       ),
-                      Text('${item.amount.toInt()}'),
-                      AddButton(
-                        onPressed: () {
-                          iMat.shoppingCartAdd(ShoppingItem(item.product));
-                        },
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 14,
                       ),
-                    ],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      elevation: 4,
+                    ),
                   ),
                 ],
-              ),
-
-              leading: _buildProductImage(iMat, item.product),
-
-              trailing: DeleteButton(
-                onPressed: () {
-                  iMat.shoppingCartRemove(item);
-                },
               ),
             ),
           ),
@@ -65,20 +143,26 @@ class CartView extends StatelessWidget {
 
   Widget _buildProductImage(ImatDataHandler iMat, Product product) {
     Uint8List? imageData = iMat.getImageData(product);
-    if (imageData != null) {
-      return Image.memory(
-        imageData,
-        fit: BoxFit.cover,
-        width: 100,
-        height: 100,
-      );
-    } else {
-      return Image.asset(
-        'assets/images/placeholder.png',
-        fit: BoxFit.cover,
-        width: 100,
-        height: 100,
-      );
-    }
+
+    return Container(
+      width: 90,
+      height: 90,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 4)),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child:
+            imageData != null
+                ? Image.memory(imageData, fit: BoxFit.cover)
+                : Image.asset(
+                  'assets/images/placeholder.png',
+                  fit: BoxFit.cover,
+                ),
+      ),
+    );
   }
 }

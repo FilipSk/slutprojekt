@@ -10,10 +10,10 @@ import 'package:window_size/window_size.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowMinSize(const Size(1920, 1080));
-    setWindowMaxSize(const Size(1920, 1080)); // Samma som min = låst
-  }
+  // if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+  //   setWindowMinSize(const Size(1920, 1080));
+  //   setWindowMaxSize(const Size(1920, 1080)); // Samma som min = låst
+  // }
   runApp(
     MultiProvider(
       providers: [
@@ -35,9 +35,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       title: 'Hanks Livs',
-      theme: ThemeData(
-        colorScheme: AppTheme.colorScheme,
-        ),
+      theme: ThemeData(colorScheme: AppTheme.colorScheme),
       home: const MainView(),
     );
   }
