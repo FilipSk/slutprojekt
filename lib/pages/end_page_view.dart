@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:imat_app/model/imat/customer.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
-import 'package:imat_app/model/imat/customer.dart';
+
 import 'package:imat_app/widgets/screen_progress.dart';
 import 'package:provider/provider.dart';
 
