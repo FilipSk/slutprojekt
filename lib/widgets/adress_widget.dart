@@ -1,7 +1,10 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:imat_app/model/imat/customer.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
+
+const List<String> list = <String>['Idag Kl 16-20', 'Imorgon Kl 16-20'];
 
 class CustomerDetails extends StatefulWidget {
   const CustomerDetails({super.key});
@@ -21,6 +24,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
   late final ImatDataHandler _imatDataHandler;
 
   bool isEditing = false;
+  String dropdownValue = list.first;
 
   @override
   void initState() {
@@ -40,6 +44,10 @@ class _CustomerDetailsState extends State<CustomerDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final menuEntries = UnmodifiableListView(
+      list.map((name) => DropdownMenuEntry(value: name, label: name)),
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -87,10 +95,8 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                         onPressed: () => setState(() => isEditing = false),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
-
                           foregroundColor: Colors.white,
                         ),
-
                         child: Text(
                           "Avbryt",
                           style: TextStyle(
@@ -111,7 +117,6 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                           ),
                           foregroundColor: Colors.white,
                         ),
-
                         child: Text(
                           "Spara",
                           style: TextStyle(
@@ -128,7 +133,6 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                       backgroundColor: const Color.fromARGB(255, 19, 106, 255),
                       foregroundColor: Colors.white,
                     ),
-
                     child: Text(
                       "Ändra",
                       style: TextStyle(
@@ -137,6 +141,33 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                       ),
                     ),
                   ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Column(
+            children: [
+              Text(
+                'Välj när du vill ha leveransen:',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 5),
+              DropdownMenu<String>(
+                initialSelection: list.first,
+                onSelected: (String? value) {
+                  setState(() {
+                    dropdownValue = value!;
+                  });
+                },
+                dropdownMenuEntries: menuEntries,
+                enableFilter: false,
+              ),
+
+              Text(
+                '*Du får ett SMS 15 minuter innan vi anländer till adressen.',
+                style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
+              ),
+            ],
+          ),
         ),
       ],
     );

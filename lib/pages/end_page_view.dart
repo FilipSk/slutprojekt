@@ -50,15 +50,16 @@ class _EndPageView extends State<EndPageView> {
       child: Card(
         child: Column(
           children: [
-            ScreenProgress(ticks: 4),
+            SizedBox(height: 12),
+            Center(child: ScreenProgress(ticks: 4)),
+
             Divider(),
-            SizedBox(height: 8),
-            SizedBox(width: 100),
+            SizedBox(height: 11),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 16),
+                  padding: const EdgeInsets.only(left: 10),
                   child: ElevatedButton.icon(
                     onPressed:
                         () => Navigator.of(
@@ -82,39 +83,42 @@ class _EndPageView extends State<EndPageView> {
             ),
 
             SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.check_circle,
-                  color: const Color.fromARGB(255, 76, 175, 80),
-                  size: 100,
-                ),
-                const SizedBox(width: 17),
-                Expanded(
-                  child: Text(
-                    'Tack för din beställning, ${customer.firstName}!',
-                    style: const TextStyle(
-                      fontSize: 45,
-                      fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Text(
+                      'Tack för din beställning, ${customer.firstName}!',
+                      style: const TextStyle(
+                        fontSize: 38,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    softWrap: true,
                   ),
-                ),
-              ],
+                  const SizedBox(width: 8),
+                  const Icon(
+                    Icons.check_circle,
+                    color: Color.fromARGB(255, 76, 175, 80),
+                    size: 80,
+                  ),
+                ],
+              ),
             ),
 
             Text(
-              "Dina varor anländer på:\n       ${customer.address} \nIdag mellan kl 18 och 20.",
+              "Dina varor anländer på:\n         ${customer.address} \nIdag mellan kl 16 och 20.",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 35),
+            SizedBox(height: 20),
             Text(
               "Välkommen åter!",
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
 
-            Image.asset("assets/images/hand2.jpg", height: 250, width: 500),
+            Image.asset("assets/images/hand2.jpg", height: 225, width: 450),
           ],
         ),
       ),

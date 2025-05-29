@@ -23,14 +23,14 @@ class CheakCustomerDetail extends StatelessWidget {
         children: [
           ScreenProgress(ticks: 2),
           Divider(),
-          SizedBox(height: 8),
+          SizedBox(height: 11),
 
           // Text(
           //   "leverans and beställning",
           //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           // ),
           const CustomerDetails(),
-          SizedBox(height: 114),
+          SizedBox(height: 6),
           Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

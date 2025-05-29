@@ -69,7 +69,7 @@ class _PaymentViewState extends State<PaymentView> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 4),
 
                 const Text(
                   'Betalningsinformation',
@@ -113,33 +113,50 @@ class _PaymentViewState extends State<PaymentView> {
   }
 
   Widget _buildField(String label, TextEditingController controller) {
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(height: 6),
-          TextFormField(
-            controller: controller,
-            enabled: isEditing,
-            style: const TextStyle(fontSize: 16),
-            decoration: InputDecoration(
-              border: const OutlineInputBorder(),
-              filled: true,
-              fillColor: isEditing ? Colors.grey[100] : Colors.grey[200],
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 10,
+    if (isEditing) {
+      return SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 6),
+            TextFormField(
+              controller: controller,
+              style: const TextStyle(fontSize: 16),
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                filled: true,
+                fillColor: isEditing ? Colors.grey[100] : Colors.grey[200],
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    } else {
+      return SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 6),
+            Text(controller.text, style: const TextStyle(fontSize: 20)),
+            Divider(),
+          ],
+        ),
+      );
+    }
   }
 
   Widget _buildActionButtons() {
