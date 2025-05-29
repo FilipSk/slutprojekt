@@ -3,6 +3,7 @@ import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat_category_handler.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
+import 'package:imat_app/widgets/Buttons/icon_text_button.dart';
 import 'package:provider/provider.dart';
 
 class FavNavBar extends StatelessWidget {
@@ -18,40 +19,15 @@ class FavNavBar extends StatelessWidget {
 
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //Tillbaka knapp
-          ElevatedButton.icon(
-                      onPressed: () {
+          ButtonIconText(
+                text: Text("Tillbaka", style: TextStyle(color: Colors.white, fontSize: AppTheme.fontMedium),),
+                icon: Icon(Icons.arrow_back, color: Colors.white, size: 30,),
+                onPressed: () {
                 catHandler.toggleFavorite();
                  goBack(iMat,catHandler);
               },
-                      icon: const Icon(Icons.arrow_back),
-                      label: const Text('Tillbaka'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 15,
-                        ),
-                        textStyle: const TextStyle(
-                          fontSize: AppTheme.fontNavBar,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-          
-        // Card(
-        //   color: AppTheme.cardColor,
-        //   elevation: 4,
-        //   child: InkWell(
-        //     child: Padding(
-        //       padding:const EdgeInsets.only(left: 20, right: 20, bottom: 10, top: 10),
-        //       child: IconButton(onPressed: () => {catHandler.toggleFavorite(), goBack(iMat,catHandler)}, icon: Icon(Icons.exit_to_app_outlined)),),
-        //     )
-        // ),
+                color: Colors.red,
+              ),
         ]
       ),);
   }

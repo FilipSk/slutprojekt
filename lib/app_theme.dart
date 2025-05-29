@@ -10,6 +10,7 @@ class AppTheme {
 
   static const double fontSmall = 10;
   static const double fontMedium = 20;
+    static const double fontMediumBig = 25;
   static const double fontBig = 30;
   static const double fontLarge = 40;
 static const double fontHuge = 50;

@@ -3,7 +3,10 @@ import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat/shopping_item.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
+import 'package:imat_app/widgets/Buttons/button.dart';
 import 'package:imat_app/widgets/product_dialog.dart';
+import 'package:imat_app/widgets/remove_button.dart';
+import 'package:imat_app/widgets/Buttons/text_button.dart';
 import 'package:provider/provider.dart';
 
 class ProductCard extends StatelessWidget {
@@ -52,33 +55,18 @@ class ProductCard extends StatelessWidget {
                 product.name,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: AppTheme.fontMedium,
+                  fontSize: AppTheme.fontLarge,
                 ),
               ),
               Text(
                 product.price.toStringAsFixed(2) +" "+ product.unit,
-                style: TextStyle(fontSize: AppTheme.fontMedium),
+                style: TextStyle(fontSize: AppTheme.fontBig),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _addToCartButton(product, context),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     iMat.shoppingCartUpdate(ShoppingItem(product), delta: -1);
-                  //   },
-                  //   icon: Icon(Icons.remove),
-                  //   iconSize: AppTheme.iconLarge,
-                  // ),
-                  // const Text("   "),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     iMat.shoppingCartAdd(ShoppingItem(product));
-                  //   },
-                  //   icon: Icon(Icons.add),
-                  //   iconSize: AppTheme.iconLarge,
-                  // ),
-                  // _favoriteButton(product, context),
+
                 ],
               ),
             ],
@@ -126,78 +114,31 @@ class ProductCard extends StatelessWidget {
 
 
     var icon =
-        isFavorite ? ElevatedButton.icon(
-                      onPressed: () => iMat.shoppingCartAdd(ShoppingItem(product)),
-                      label: const Text('Lägg till i varukorg', softWrap: true, textWidthBasis: TextWidthBasis.parent,),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 30,
-                          vertical: 15,
-                        ),
-                        textStyle: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    )
+        isFavorite ? 
+        ButtonText(
+                text: Text('Lägg till i varukorg',),
+                onPressed: () => iMat.shoppingCartUpdate(ShoppingItem(product)),
+                color: Colors.green,
+                size: AppTheme.fontMedium
+              )
             : Row(children: [
-              ElevatedButton.icon(
-                      onPressed: () => iMat.shoppingCartUpdate(ShoppingItem(product), delta: -1),
-                      label:Icon(Icons.remove, size: AppTheme.iconLarge,),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 15,
-                          vertical: 10,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-              // IconButton(
-              //       onPressed: () {
-              //         iMat.shoppingCartUpdate(ShoppingItem(product), delta: -1);
-              //       },
-              //       icon: Icon(Icons.remove),
-              //       iconSize: AppTheme.iconLarge,
-              //     ),
+              Button(
+                icon: Icon(Icons.remove, size: AppTheme.iconLarge,),
+                onPressed: () => iMat.shoppingCartUpdate(ShoppingItem(product), delta: -1),
+                color: Colors.red,
+              ),
               Padding(padding: EdgeInsets.only(left: 20, right: 20),child: 
                   Text('${item.amount.toInt()}',style: TextStyle(
                               color: Colors.black87,
                               fontWeight: FontWeight.w600,
                               fontSize: 25,
                             ),),),
-                  ElevatedButton.icon(
-                      onPressed: () => iMat.shoppingCartAdd(ShoppingItem(product)),
-                      label:Icon(Icons.add, size: AppTheme.iconLarge,),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 15,
-                          vertical: 10,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     iMat.shoppingCartAdd(ShoppingItem(product));
-                  //   },
-                  //   icon: Icon(Icons.add),
-                  //   iconSize: AppTheme.iconLarge,
-                  // ),
-                  //_favoriteButton(product, context),
-                  ]);
+              Button(
+                icon: Icon(Icons.add, size: AppTheme.iconLarge,),
+                onPressed: () => iMat.shoppingCartAdd(ShoppingItem(product)),
+                color: Colors.green,
+              ),  
+              ]);
 
     return icon;
   }
