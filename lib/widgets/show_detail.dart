@@ -19,12 +19,12 @@ class ShowDetail extends StatelessWidget {
           children: [
             const Text(
               "Beskrivning",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             Text(
               productDetail.description,
-              style: const TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 20),
               softWrap: true,
             ),
           ],
@@ -37,12 +37,12 @@ class ShowDetail extends StatelessWidget {
           children: [
             const Text(
               "Märke",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             Text(
               productDetail.brand,
-              style: const TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 20),
               softWrap: true,
             ),
           ],
@@ -55,12 +55,12 @@ class ShowDetail extends StatelessWidget {
           children: [
             const Text(
               "Ursprung",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             Text(
               productDetail.origin,
-              style: const TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 20),
               softWrap: true,
             ),
           ],
@@ -73,12 +73,12 @@ class ShowDetail extends StatelessWidget {
           children: [
             const Text(
               "Innehåll",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             Text(
               productDetail.contents,
-              style: const TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 20),
               softWrap: true,
             ),
           ],
@@ -91,12 +91,12 @@ class ShowDetail extends StatelessWidget {
           children: [
             const Text(
               "Produkt-ID",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             Text(
               productDetail.productId.toString(),
-              style: const TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 20),
               softWrap: true,
             ),
           ],
