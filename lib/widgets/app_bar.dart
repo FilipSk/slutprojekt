@@ -40,8 +40,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ClipOval(
                     child: Image.asset(
                       "assets/images/Hank.png",
-                      width: 80,
-                      height: 80,
+                      width: 65,
+                      height: 65,
                       fit: BoxFit.cover,
                     ),
                   ),
