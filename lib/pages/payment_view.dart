@@ -72,7 +72,7 @@ class _PaymentViewState extends State<PaymentView> {
                 const SizedBox(height: 4),
 
                 const Text(
-                  'Betalningsinformation',
+                  'Betalningsuppgifter',
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
