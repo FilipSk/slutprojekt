@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
+import 'package:imat_app/pages/buy_list_view.dart';
 import 'package:imat_app/pages/pay_view.dart';
 import 'package:imat_app/widgets/adress_widget.dart';
-import 'package:imat_app/widgets/payment_widget.dart';
 import 'package:imat_app/widgets/screen_progress.dart';
 import 'package:provider/provider.dart';
 
@@ -53,41 +53,24 @@ class CheakCustomerDetail extends StatelessWidget {
 
             children: [
               ElevatedButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed:
+                    () => _replaceDialogWith(context, const BuyListView()),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
                 ),
-
-                child: Text(
-                  "Tillbaka",
+                child: const Text(
+                  'Tillbaka',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
               ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) {
-                      return Dialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadiusDirectional.circular(20),
-                        ),
-                        child: SizedBox(
-                          width: 850,
-                          height: 700,
-
-                          child: PayView(),
-                        ),
-                      );
-                    },
-                  );
-                },
+                onPressed: () => _replaceDialogWith(context, const PayView()),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
                 ),
+
                 child: Text(
                   "Nästa",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -96,6 +79,21 @@ class CheakCustomerDetail extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  void _replaceDialogWith(BuildContext context, Widget child) {
+    Navigator.pop(context); // Stäng befintlig dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder:
+          (_) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: SizedBox(width: 850, height: 700, child: child),
       ),
     );
   }

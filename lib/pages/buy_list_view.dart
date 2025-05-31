@@ -131,29 +131,15 @@ class BuyListView extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) {
-                      return Dialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: SizedBox(
-                          width: 850,
-                          height: 700,
-                          child: CheakCustomerDetail(),
-                        ),
-                      );
-                    },
-                  );
-                },
+                onPressed:
+                    () => _replaceDialogWith(
+                  context,
+                  const CheakCustomerDetail(),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
                 ),
-
                 child: Text(
                   "Nästa",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -162,6 +148,21 @@ class BuyListView extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  void _replaceDialogWith(BuildContext context, Widget child) {
+    Navigator.pop(context); // Stäng befintlig dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder:
+          (_) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: SizedBox(width: 850, height: 700, child: child),
       ),
     );
   }

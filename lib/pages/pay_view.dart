@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
+import 'package:imat_app/pages/cheak_costomer_detail.dart';
 import 'package:imat_app/pages/end_page_view.dart';
 import 'package:imat_app/widgets/payment_widget.dart';
 import 'package:imat_app/widgets/screen_progress.dart';
@@ -11,65 +12,61 @@ class PayView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var iMat = context.watch<ImatDataHandler>();
-    //var items = iMat.getShoppingCart().items;
 
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       height: 300,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
-
       child: Column(
         children: [
           ScreenProgress(ticks: 3),
-          Divider(),
-          SizedBox(height: 8),
+          const Divider(),
+          const SizedBox(height: 8),
 
-          // Text(
-          //   "leverans and beställning",
-          //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          // ),
           Expanded(
             child: Column(
               children: [
-                //CustomerDetails(), här ska Emil anropa sin funktion
                 const PaymentDetails(),
-                SizedBox(height: 54),
-                Divider(),
+                const SizedBox(height: 54),
+                const Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Summa:',
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-
                     Text(
                       '${iMat.shoppingCartTotal().toStringAsFixed(2)}:-',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () => Navigator.pop(context),
+                      onPressed:
+                          () => _replaceDialogWith(
+                        context,
+                        const CheakCustomerDetail(),
+                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                         foregroundColor: Colors.white,
                       ),
-
-                      child: Text(
+                      child: const Text(
                         "Tillbaka",
                         style: TextStyle(
                           fontSize: 30,
@@ -77,37 +74,17 @@ class PayView extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     ElevatedButton(
                       onPressed: () {
                         iMat.placeOrder();
                         iMat.shoppingCartClear();
-
-                        showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (context) {
-                            return Dialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadiusDirectional.circular(
-                                  20,
-                                ),
-                              ),
-                              child: SizedBox(
-                                width: 850,
-                                height: 700,
-
-                                child: EndPageView(),
-                              ),
-                            );
-                          },
-                        );
+                        _replaceDialogWith(context, const EndPageView());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                         foregroundColor: Colors.white,
                       ),
-                      child: Text(
+                      child: const Text(
                         "Betala",
                         style: TextStyle(
                           fontSize: 30,
@@ -121,6 +98,21 @@ class PayView extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _replaceDialogWith(BuildContext context, Widget child) {
+    Navigator.pop(context); // Stäng befintlig dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder:
+          (_) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: SizedBox(width: 850, height: 700, child: child),
       ),
     );
   }
