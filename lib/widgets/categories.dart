@@ -15,21 +15,21 @@ class Categories extends StatelessWidget {
     var categories = catHandler.currentCategories;
 
     return SliverGrid.builder(
-            itemCount: categories.getCategories().length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, // 4 kolumner
-            crossAxisSpacing: AppTheme.paddingLarge,
-            mainAxisSpacing: AppTheme.paddingSmall,
-            childAspectRatio: 1.5,
-          ),
-          itemBuilder: (context, index) {
-            final category = categories.getCategories()[index];
+      itemCount: categories.getCategories().length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: AppTheme.paddingLarge,
+        mainAxisSpacing: AppTheme.paddingSmall,
+        childAspectRatio: 1.5,
+      ),
+      itemBuilder: (context, index) {
+        final category = categories.getCategories()[index];
 
-            return Category(
-              category,
-              imat.findProductsByCategory(category.getProductCategories()[0])[0]
-              );
-          },
-          );
+        return Category(
+          category,
+          imat.findProductsByCategory(category.getProductCategories()[0])[0],
+        );
+      },
+    );
   }
 }

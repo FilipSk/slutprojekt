@@ -49,7 +49,7 @@ class _HistoryViewState extends State<HistoryView> {
                       // When a user taps on an item the function _selectOrder is called
                       // The Material widget is need to make hovering pliancy effects visible
                       child: Material(
-                        color: const Color.fromARGB(255, 76, 175, 80),
+                        color: AppTheme.mainThemeColor,
                         child: _ordersList(context, orders, _selectOrder),
                       ),
                     ),
@@ -77,7 +77,7 @@ class _HistoryViewState extends State<HistoryView> {
             icon: const Icon(Icons.arrow_back),
             label: const Text('Tillbaka'),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
+              backgroundColor: AppTheme.secondaryThemeColor,
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               textStyle: const TextStyle(
@@ -117,7 +117,7 @@ class _HistoryViewState extends State<HistoryView> {
 
     return ListTile(
       selected: isSelected,
-      selectedTileColor: const Color.fromARGB(235, 10, 215, 123),
+      selectedTileColor: AppTheme.mainThemeColor,
       tileColor: const Color.fromARGB(176, 84, 197, 88),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       onTap: () => onTap(order),

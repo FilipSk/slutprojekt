@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/credit_card.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:provider/provider.dart';
@@ -69,19 +70,15 @@ class _CardDetailsState extends State<PaymentDetails> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ElevatedButton(
-                        onPressed: _saveCard,
+                        onPressed: () => setState(() => isEditing = false),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            76,
-                            175,
-                            80,
-                          ),
+                          backgroundColor: AppTheme.secondaryThemeColor,
+
                           foregroundColor: Colors.white,
                         ),
 
                         child: Text(
-                          "Spara",
+                          "Avbryt",
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -90,15 +87,14 @@ class _CardDetailsState extends State<PaymentDetails> {
                       ),
                       const SizedBox(width: 12),
                       ElevatedButton(
-                        onPressed: () => setState(() => isEditing = false),
+                        onPressed: _saveCard,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-
+                          backgroundColor: AppTheme.mainThemeColor,
                           foregroundColor: Colors.white,
                         ),
 
                         child: Text(
-                          "Avbryt",
+                          "Spara",
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,

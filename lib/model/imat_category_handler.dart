@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:imat_app/model/imat/product.dart';
 
-
-
 class ImatCategoryHandler extends ChangeNotifier {
   late ICategory currentCategories;
 
   bool favourites = false;
-  void toggleFavorite(){
+  void toggleFavorite() {
     favourites = !favourites;
   }
-  MainCategories start = MainCategories("Start");
+
+  MainCategories start = MainCategories("Kategorier");
 
   MainCategories frukt = MainCategories("Frukt");
   MainCategories drick = MainCategories("Drickor");
@@ -168,22 +167,19 @@ class MainCategories extends ICategory {
   bool getStart() {
     return start;
   }
-  
+
   @override
   String getImageName() {
-    // TODO: implement getImageName
     throw UnimplementedError();
   }
-  
+
   @override
   List<ICategory> getParents() {
-    if (start){
+    if (start) {
       return [];
     }
     return parent.getParents() + [parent];
   }
-  
-  
 }
 
 class SubCategories extends ICategory {
@@ -237,20 +233,17 @@ class SubCategories extends ICategory {
   bool getStart() {
     return start;
   }
-  
+
   @override
   String getImageName() {
-    
     return "";
   }
-  
+
   @override
   List<ICategory> getParents() {
-    if (start){
+    if (start) {
       return [];
     }
     return parent.getParents() + [parent];
   }
-  
-  
 }

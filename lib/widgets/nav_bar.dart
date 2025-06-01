@@ -20,75 +20,96 @@ class NavBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ButtonIconText(
-                text: Text("Favoriter", style: TextStyle(color: Colors.black, fontSize: AppTheme.fontMedium),),
-                icon: Icon(Icons.star_border_outlined, color: Colors.black, size: 30,),
-                onPressed: () {
-                catHandler.toggleFavorite();
-                iMat.selectFavorites();
-              },
-                color: const Color.fromARGB(255, 253, 242, 145),
+            text: Text(
+              "Favoriter",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: AppTheme.fontMedium,
               ),
-        SizedBox(width: 10,),
-        if (!catHandler.currentCategories.getStart())
-        ButtonIconText(
-                text: Text("Tillbaka", style: TextStyle(color: Colors.black, fontSize: AppTheme.fontMedium),),
-                icon: Icon(Icons.arrow_back, color: Colors.black, size: 30,),
-                onPressed: () => goBack(iMat, catHandler),
-                color: Colors.red,
-              ),
-
-        SizedBox(width: 10,),
-        //Text("data"),
-        SizedBox(width: 560, height: 50,
-        child: Row(
-          
-          //scrollDirection: Axis.horizontal,
-          children: [
-            for (var catParent in catHandler.currentCategories.getParents())
-            Padding(padding: EdgeInsets.only(left: 10),
-            child: ButtonText(
-                text: Text("${catParent.getName()}/", style: TextStyle(color: Colors.black),),
-                onPressed: () => findProducts(catParent, iMat, catHandler),
-                color: AppTheme.cardColor,
-                size: AppTheme.fontMedium
-              )
             ),
-            Padding(padding: EdgeInsets.only(left: 10), child: 
+            icon: Icon(
+              Icons.star_border_outlined,
+              color: Colors.black,
+              size: 30,
+            ),
+            onPressed: () {
+              catHandler.toggleFavorite();
+              iMat.selectFavorites();
+            },
+            color: const Color.fromARGB(255, 253, 242, 145),
+          ),
+          SizedBox(width: 10),
+          if (!catHandler.currentCategories.getStart())
+            ButtonIconText(
+              text: Text(
+                "Tillbaka",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: AppTheme.fontMedium,
+                ),
+              ),
+              icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
+              onPressed: () => goBack(iMat, catHandler),
+              color: AppTheme.secondaryThemeColor,
+            ),
 
-            
-            ElevatedButton.icon(
-              onPressed: null,
-                      label: Text(
-                            catHandler.currentCategories.getName(),
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold,
-                              fontSize: AppTheme.fontNavBar,
-                            ),
-                          ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 239, 239, 239),
-                        foregroundColor: Colors.black,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 15,
-                        ),
-                        textStyle: const TextStyle(
-                          fontSize: AppTheme.fontNavBar,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+          SizedBox(width: 10),
+          //Text("data"),
+          SizedBox(
+            width: 560,
+            height: 50,
+            child: Row(
+              //scrollDirection: Axis.horizontal,
+              children: [
+                for (var catParent in catHandler.currentCategories.getParents())
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: ButtonText(
+                      text: Text(
+                        "${catParent.getName()}/",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      onPressed:
+                          () => findProducts(catParent, iMat, catHandler),
+                      color: AppTheme.cardColor,
+                      size: AppTheme.fontMedium,
+                    ),
+                  ),
+                Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: ElevatedButton.icon(
+                    onPressed: null,
+                    label: Text(
+                      catHandler.currentCategories.getName(),
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold,
+                        fontSize: AppTheme.fontNavBar,
                       ),
                     ),
-            
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 239, 239, 239),
+                      foregroundColor: Colors.black,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 15,
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: AppTheme.fontNavBar,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            ],
-        ),
-        ),
-        ]
-      ),);
+          ),
+        ],
+      ),
+    );
   }
 
   void findProducts(

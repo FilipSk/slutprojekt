@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:imat_app/pages/cheak_costomer_detail.dart';
 import 'package:imat_app/pages/end_page_view.dart';
@@ -59,11 +60,11 @@ class PayView extends StatelessWidget {
                     ElevatedButton(
                       onPressed:
                           () => _replaceDialogWith(
-                        context,
-                        const CheakCustomerDetail(),
-                      ),
+                            context,
+                            const CheakCustomerDetail(),
+                          ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
+                        backgroundColor: AppTheme.secondaryThemeColor,
                         foregroundColor: Colors.white,
                       ),
                       child: const Text(
@@ -81,7 +82,7 @@ class PayView extends StatelessWidget {
                         _replaceDialogWith(context, const EndPageView());
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
+                        backgroundColor: AppTheme.mainThemeColor,
                         foregroundColor: Colors.white,
                       ),
                       child: const Text(
@@ -109,11 +110,11 @@ class PayView extends StatelessWidget {
       barrierDismissible: false,
       builder:
           (_) => Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: SizedBox(width: 850, height: 700, child: child),
-      ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: SizedBox(width: 850, height: 700, child: child),
+          ),
     );
   }
 }

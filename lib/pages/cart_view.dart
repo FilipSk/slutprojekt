@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat/shopping_item.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
@@ -57,7 +58,7 @@ class CartView extends StatelessWidget {
                                     delta: -1,
                                   ),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red,
+                                backgroundColor: AppTheme.secondaryThemeColor,
                                 foregroundColor: Colors.white,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 15,
@@ -84,7 +85,7 @@ class CartView extends StatelessWidget {
                                     ShoppingItem(item.product),
                                   ),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
+                                backgroundColor: AppTheme.mainThemeColor,
                                 foregroundColor: Colors.white,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 15,
@@ -123,7 +124,7 @@ class CartView extends StatelessWidget {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: AppTheme.secondaryThemeColor,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 14,

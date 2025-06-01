@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:imat_app/pages/main_view.dart';
@@ -30,14 +31,14 @@ class CustomerServiceView extends StatelessWidget {
                       icon: const Icon(Icons.arrow_back),
                       label: const Text('Tillbaka'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
+                        backgroundColor: AppTheme.secondaryThemeColor,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 30,
                           vertical: 15,
                         ),
                         textStyle: const TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                         shape: RoundedRectangleBorder(

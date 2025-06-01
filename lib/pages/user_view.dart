@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/pages/adress_view.dart';
 import 'package:imat_app/pages/customer_service_view.dart';
 import 'package:imat_app/pages/history_view.dart';
@@ -25,7 +26,7 @@ class UserView extends StatelessWidget {
                 icon: const Icon(Icons.arrow_back),
                 label: const Text('Tillbaka'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
+                  backgroundColor: AppTheme.secondaryThemeColor,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 30,
@@ -63,7 +64,7 @@ class UserView extends StatelessWidget {
                               ),
                             );
                           },
-                          color: const Color.fromARGB(255, 76, 175, 80),
+                          color: AppTheme.mainThemeColor,
                         ),
                         const SizedBox(width: 80),
                         UserButton(
@@ -81,7 +82,7 @@ class UserView extends StatelessWidget {
                               ),
                             );
                           },
-                          color: const Color.fromARGB(255, 76, 175, 80),
+                          color: AppTheme.mainThemeColor,
                         ),
                       ],
                     ),
@@ -104,7 +105,7 @@ class UserView extends StatelessWidget {
                               ),
                             );
                           },
-                          color: const Color.fromARGB(255, 76, 175, 80),
+                          color: AppTheme.mainThemeColor,
                         ),
                         const SizedBox(width: 80),
                         UserButton(
@@ -122,7 +123,7 @@ class UserView extends StatelessWidget {
                               ),
                             );
                           },
-                          color: const Color.fromARGB(255, 76, 175, 80),
+                          color: AppTheme.mainThemeColor,
                         ),
                       ],
                     ),

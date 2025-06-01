@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:imat_app/model/imat/customer.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
@@ -94,7 +95,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                       ElevatedButton(
                         onPressed: () => setState(() => isEditing = false),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
+                          backgroundColor: AppTheme.secondaryThemeColor,
                           foregroundColor: Colors.white,
                         ),
                         child: Text(
@@ -109,12 +110,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                       ElevatedButton(
                         onPressed: _saveCustomer,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            76,
-                            175,
-                            80,
-                          ),
+                          backgroundColor: AppTheme.mainThemeColor,
                           foregroundColor: Colors.white,
                         ),
                         child: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 import 'package:imat_app/pages/buy_list_view.dart';
 import 'package:imat_app/pages/cart_view.dart';
@@ -30,9 +31,9 @@ class ShoppingCart extends StatelessWidget {
                 SizedBox(width: 16),
 
                 Icon(
-                  Icons.shopping_cart,
+                  Icons.shopping_cart_rounded,
                   size: 46,
-                  color: const Color.fromARGB(255, 175, 11, 28),
+                  color: Colors.black,
                 ),
               ],
             ),
@@ -87,7 +88,7 @@ class ShoppingCart extends StatelessWidget {
                       },
 
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: AppTheme.mainThemeColor,
                 foregroundColor: Colors.white,
               ),
               child: Text(

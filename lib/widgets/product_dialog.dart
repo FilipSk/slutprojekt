@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat/product.dart';
 import 'package:imat_app/model/imat/product_detail.dart';
 import 'package:imat_app/model/imat/shopping_item.dart';
@@ -87,7 +88,7 @@ class ProductDialog extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () => Navigator.pop(context),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: AppTheme.secondaryThemeColor,
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,
@@ -98,7 +99,7 @@ class ProductDialog extends StatelessWidget {
                       ),
                     ),
                     child: const Text(
-                      "Tillbaka",
+                      "Stäng",
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -121,7 +122,7 @@ class ProductDialog extends StatelessWidget {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
+                      backgroundColor: AppTheme.mainThemeColor,
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,

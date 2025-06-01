@@ -10,10 +10,10 @@ class AppTheme {
 
   static const double fontSmall = 10;
   static const double fontMedium = 20;
-    static const double fontMediumBig = 25;
+  static const double fontMediumBig = 25;
   static const double fontBig = 30;
   static const double fontLarge = 40;
-static const double fontHuge = 50;
+  static const double fontHuge = 50;
 
   static const double fontNavBar = 20;
   static const double iconSmall = 10;
@@ -29,6 +29,6 @@ static const double fontHuge = 50;
   static Color hoverColor = Colors.blue.withAlpha(30);
   static Color splashColor = const Color.fromARGB(255, 0, 0, 0).withAlpha(30);
 
-
-
+  static Color mainThemeColor = const Color.fromARGB(255, 76, 175, 80);
+  static Color secondaryThemeColor = Colors.red;
 }

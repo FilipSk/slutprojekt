@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:imat_app/model/imat_data_handler.dart';
 
 import 'package:imat_app/widgets/screen_progress.dart';
@@ -65,7 +66,7 @@ class _EndPageView extends State<EndPageView> {
                           context,
                         ).popUntil((route) => route.isFirst),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: AppTheme.secondaryThemeColor,
                       foregroundColor: Colors.white,
                     ),
                     icon: const Icon(Icons.close_rounded, size: 28),
@@ -98,9 +99,9 @@ class _EndPageView extends State<EndPageView> {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  const Icon(
+                  Icon(
                     Icons.check_circle,
-                    color: Color.fromARGB(255, 76, 175, 80),
+                    color: AppTheme.mainThemeColor,
                     size: 80,
                   ),
                 ],

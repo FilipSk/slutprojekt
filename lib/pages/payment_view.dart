@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:imat_app/widgets/app_bar.dart';
 import 'package:imat_app/model/imat/credit_card.dart';
@@ -53,7 +54,7 @@ class _PaymentViewState extends State<PaymentView> {
                     icon: const Icon(Icons.arrow_back),
                     label: const Text('Tillbaka'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: AppTheme.secondaryThemeColor,
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 30,
@@ -189,7 +190,7 @@ class _PaymentViewState extends State<PaymentView> {
               });
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+              backgroundColor: AppTheme.secondaryThemeColor,
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             ),
@@ -199,7 +200,7 @@ class _PaymentViewState extends State<PaymentView> {
           ElevatedButton(
             onPressed: _saveCard,
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 76, 175, 80),
+              backgroundColor: AppTheme.mainThemeColor,
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             ),

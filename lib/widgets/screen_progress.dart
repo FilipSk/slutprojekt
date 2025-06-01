@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imat_app/app_theme.dart';
 
 class ScreenProgress extends StatelessWidget {
   final int ticks;
@@ -52,7 +53,7 @@ class ScreenProgress extends StatelessWidget {
 
   Widget tick(bool isChecked) {
     return isChecked
-        ? Icon(Icons.check_circle, color: Colors.green, size: 30)
+        ? Icon(Icons.check_circle, color: AppTheme.mainThemeColor, size: 30)
         : Icon(Icons.radio_button_unchecked, color: Colors.blue);
   }
 
