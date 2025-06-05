@@ -21,28 +21,20 @@ class Centerview extends StatelessWidget {
     var catHandler = context.watch<ImatCategoryHandler>();
     final products = iMat.selectProducts;
     if (!hasSearchText) {
-      if (catHandler.favourites){
+      if (catHandler.favourites) {
         return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const FavNavBar(),
-          SizedBox(
-            width: 1400,
-            height: 630,
-            child: const Favourites(),
-          ),
-        ],
-      );
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const FavNavBar(),
+            SizedBox(width: 1400, height: 655, child: const Favourites()),
+          ],
+        );
       }
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const NavBar(),
-          SizedBox(
-            width: 1200,
-            height: 630,
-            child: const Products(),
-          ),
+          SizedBox(width: 1200, height: 655, child: const Products()),
         ],
       );
     }

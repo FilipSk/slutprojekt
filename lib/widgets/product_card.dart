@@ -55,7 +55,7 @@ class ProductCard extends StatelessWidget {
                     product.name,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: AppTheme.fontLarge,
+                      fontSize: AppTheme.fontMediumBig,
                     ),
                   ),
                   Text(

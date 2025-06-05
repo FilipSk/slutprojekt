@@ -78,7 +78,7 @@ class PayView extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         iMat.placeOrder();
-                        iMat.shoppingCartClear();
+                        //iMat.shoppingCartClear();
                         _replaceDialogWith(context, const EndPageView());
                       },
                       style: ElevatedButton.styleFrom(
